@@ -52,11 +52,16 @@ function citationName(name: string, first: boolean) {
     return parts.length > 1 ? `${parts.at(-1)}, ${parts.slice(0, -1).join(' ')}` : name;
 }
 
+const isCJK = (text: string) => /[\u4e00-\u9fff]/.test(text);
+
+/** English names: "Last, First" for the first author, ", and" before the last.
+ *  Chinese names: kept as written and joined with "、". */
 function CitationAuthors({ authors }: { authors: Author[] }) {
+    const chinese = authors.every(author => isCJK(author.name));
     return <>{authors.map((author, index) => <span key={index}>
-        {index > 0 && (index === authors.length - 1 ? ', and ' : ', ')}
-        <span data-citation-author className={author.name.replace(/[,\s]/g, '').toLowerCase() === 'yaoyao' ? styles.owner : undefined}>
-            {citationName(author.name, index === 0)}
+        {index > 0 && (chinese ? '、' : index === authors.length - 1 ? ', and ' : ', ')}
+        <span data-citation-author className={['yaoyao', '姚瑶'].includes(author.name.replace(/[,\s]/g, '').toLowerCase()) ? styles.owner : undefined}>
+            {chinese ? author.name : citationName(author.name, index === 0)}
         </span>
     </span>)}</>;
 }
@@ -103,7 +108,7 @@ export default function ResearchPage({ config, publications }: { config: Publica
                 {publications.filter(p => p.category === category.id).sort((a, b) => b.year - a.year).map(p => <article key={p.id} className={styles.entry} data-publication={p.id}>
                     <div className={styles.body}>
                         <h3><FormattedBibTeXText nodes={p.titleNodes} fallback={p.title} /></h3>
-                        <p data-publication-authors><CitationAuthors authors={p.authors} />. {p.year}.</p>
+                        <p data-publication-authors><CitationAuthors authors={p.authors} />{p.authors.every(a => isCJK(a.name)) ? `。${p.year}。` : `. ${p.year}.`}</p>
                         <p data-publication-details><PublicationDetails publication={p} /></p>
                         <PublicationActions publication={p} />
                     </div>
