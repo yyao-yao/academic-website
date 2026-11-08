@@ -397,4 +397,6 @@
 .academic :global([data-academic='nav-surface']) { position: relative; }
 @media (min-width: 1024px) {
   .academic :global([data-academic='nav-controls']) { position: absolute; right: 40px; top: 50%; transform: translateY(-50%); }
+  /* Keep the menu where it was: reserve the space the controls used to take. */
+  .academic :global([data-academic='nav-right']) { padding-right: 270px; }
 }
