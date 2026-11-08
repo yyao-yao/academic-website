@@ -3,16 +3,16 @@
 .section + .section { margin-top: 72px; }
 .page .section h2 { font-family: var(--font-metadata); font-size: 13px; font-weight: 400; letter-spacing: .08em; text-transform: uppercase; line-height: 1.4; color: var(--link); margin: 0 0 28px; padding-bottom: 10px; border-bottom: 1px solid var(--rule); }
 .entries { margin: 0; }
-.entry { padding: 0; }
+.entry { padding: 0 0 0 24px; }
 .entry + .entry { margin-top: 36px; }
 .body { min-width: 0; }
 .page .entry h3 { font-size: 17px; font-weight: 600; line-height: 1.5; margin: 0 0 8px; color: var(--ink); letter-spacing: -.01em; }
-.entry p { font-size: 15px; line-height: 1.6; margin: 2px 0 0; padding-left: 24px; color: var(--secondary); }
+.entry p { font-size: 15px; line-height: 1.6; margin: 2px 0 0; color: var(--secondary); }
 .owner { color: var(--link); font-weight: 600; }
-.controls { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; padding-left: 24px; }
+.controls { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 .controls button, .controls a { display: inline-flex; align-items: center; gap: 6px; min-height: 30px; padding: 3px 10px; border: 1px solid var(--control-border); border-radius: 3px; font-family: var(--font-metadata); font-size: 12px; color: var(--secondary); background: transparent; text-decoration: none; cursor: pointer; }
 .controls button:hover, .controls a:hover, .controls [aria-expanded='true'] { color: var(--link); border-color: var(--link); }
 .controls svg { width: 14px; height: 14px; }
-.abstract { margin: 12px 0 0 24px; padding-left: 16px; border-left: 1px solid var(--link); }
+.abstract { margin: 12px 0 0; padding-left: 16px; border-left: 1px solid var(--link); }
 .entry .abstract p { padding-left: 0; color: var(--ink); line-height: 1.8; }
-@media(max-width:640px) { .entry p, .controls { padding-left: 16px; } .title { font-size: 30px; margin-bottom: 40px; } .section + .section { margin-top: 48px; } }
+@media(max-width:640px) { .entry { padding-left: 16px; } .title { font-size: 30px; margin-bottom: 40px; } .section + .section { margin-top: 48px; } }
