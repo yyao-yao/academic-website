@@ -12,7 +12,7 @@ title = "POLS 1101: Introduction to American Government"
 institution = "University of Georgia"
 role = "Instructor of Record"
 semester = "Fall 2026"
-level = "Undergraduate Course"
+level = "Undergraduate"
 
 [[teaching]]
 id = "teaching-assistant"
@@ -23,7 +23,7 @@ title = "POLS 1101: Introduction to American Government"
 institution = "University of Georgia"
 role = "Teaching Assistant"
 semester = "Fall 2025 – Spring 2026"
-level = "Undergraduate Course"
+level = "Undergraduate"
 recognition = "2026 Outstanding Senior Level Teaching Assistant Award"
 recognition_institution = "University of Georgia"
 

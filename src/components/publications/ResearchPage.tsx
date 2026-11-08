@@ -6,6 +6,7 @@ import type { Author, Publication } from '@/types/publication';
 import type { PublicationPageConfig } from '@/types/page';
 import FormattedBibTeXText from './FormattedBibTeXText';
 import styles from './ResearchPage.module.css';
+import { useLocaleStore } from '@/lib/stores/localeStore';
 
 function editorNames(publication: Publication) {
     const names = publication.editors?.map(editor => editor.name) || [];
@@ -32,6 +33,7 @@ function PublicationDetails({ publication: p }: { publication: Publication }) {
 export function MaterialControls({ paper, abstract, pending, zh }: { paper?: string; abstract?: string; pending: boolean; zh: boolean }) {
     const [open, setOpen] = useState(false);
     const id = useId();
+    const zh = useLocaleStore(state => state.locale).startsWith('zh');
     if (!(pending && paper) && !abstract) return null;
     return <>
         <div className={styles.controls}>
@@ -63,12 +65,13 @@ function CitationAuthors({ authors }: { authors: Author[] }) {
 function PublicationActions({ publication: p }: { publication: Publication }) {
     const [open, setOpen] = useState(false);
     const id = useId();
+    const zh = useLocaleStore(state => state.locale).startsWith('zh');
     if (!p.pdfUrl && !p.doi && !p.abstract) return null;
     return <>
         <div className={styles.controls} data-publication-actions>
             {p.pdfUrl && <a href={p.pdfUrl} target="_blank" rel="noopener noreferrer">PDF</a>}
             {p.doi && <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener noreferrer">DOI</a>}
-            {p.abstract && <button type="button" aria-expanded={open} aria-controls={id} onClick={() => setOpen(!open)}>Abstract</button>}
+            {p.abstract && <button type="button" aria-expanded={open} aria-controls={id} onClick={() => setOpen(!open)}>{zh ? '摘要' : 'Abstract'}</button>}
         </div>
         {p.abstract && open && <div id={id} className={styles.abstract}><p>{p.abstract}</p></div>}
     </>;
@@ -78,11 +81,12 @@ function PublicationActions({ publication: p }: { publication: Publication }) {
 function PaperActions({ pdf, abstract }: { pdf?: string; abstract?: string }) {
     const [open, setOpen] = useState(false);
     const id = useId();
+    const zh = useLocaleStore(state => state.locale).startsWith('zh');
     if (!pdf && !abstract) return null;
     return <>
         <div className={styles.controls} data-publication-actions>
             {pdf && <a href={pdf} target="_blank" rel="noopener noreferrer">PDF</a>}
-            {abstract && <button type="button" aria-expanded={open} aria-controls={id} onClick={() => setOpen(!open)}>Abstract</button>}
+            {abstract && <button type="button" aria-expanded={open} aria-controls={id} onClick={() => setOpen(!open)}>{zh ? '摘要' : 'Abstract'}</button>}
         </div>
         {abstract && open && <div id={id} className={styles.abstract}>{abstract.split(/\n\s*\n/).map((para, i) => <p key={i}>{para}</p>)}</div>}
     </>;

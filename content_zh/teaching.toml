@@ -9,9 +9,9 @@ title = "独立授课教师"
 
 [[teaching.items]]
 title = "POLS 1101: Introduction to American Government"
-institution = "University of Georgia"
+institution = "佐治亚大学"
 role = "独立授课教师"
-semester = "Fall 2026"
+semester = "2026 年秋季"
 level = "本科课程"
 
 [[teaching]]
@@ -20,17 +20,17 @@ title = "教学助理"
 
 [[teaching.items]]
 title = "POLS 1101: Introduction to American Government"
-institution = "University of Georgia"
+institution = "佐治亚大学"
 role = "教学助理"
-semester = "Fall 2025 – Spring 2026"
+semester = "2025 年秋季 – 2026 年春季"
 level = "本科课程"
 recognition = "2026 Outstanding Senior Level Teaching Assistant Award"
-recognition_institution = "University of Georgia"
+recognition_institution = "佐治亚大学"
 
 [[teaching.items]]
 title = "GEC Academy"
 institution = "GEC Academy"
 role = "教学助理"
-semester = "Spring 2021 – Fall 2023"
+semester = "2021 年春季 – 2023 年秋季"
 courses_label = "课程（本科）"
 courses = ["Political Theory in Global Perspective", "Politics, Markets and States in the Global South", "International Law and the Use of Force", "Multinational Enterprises and the Law", "Sociology and the Study of Culture", "Business Negotiation"]

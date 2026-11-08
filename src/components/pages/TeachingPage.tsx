@@ -10,9 +10,14 @@ export default function TeachingPage({ config }: { config: CardPageConfig }) {
             <div>
                 {section.items.map(item => <article key={`${item.institution}-${item.title}`} className={styles.entry} data-teaching-appointment>
                     <h3>{item.title}</h3>
-                    <p>{item.title !== item.institution ? `Undergraduate, ${item.institution}. ` : ''}{item.semester}.</p>
-                    {item.courses && <p><span className={styles.label}>{item.courses_label}:</span> {item.courses.join('; ')}.</p>}
-                    {item.recognition && <p className={styles.recognition} data-teaching-recognition>{item.recognition}, {item.recognition_institution}</p>}
+                    <p>{(() => {
+                        const zh = /[\u4e00-\u9fff]/.test(item.semester);
+                        const level = item.level || (zh ? '本科课程' : 'Undergraduate');
+                        const where = item.title !== item.institution ? `${level}${zh ? '，' : ', '}${item.institution}${zh ? '。' : '. '}` : '';
+                        return `${where}${item.semester}${zh ? '。' : '.'}`;
+                    })()}</p>
+                    {item.courses && <p><span className={styles.label}>{item.courses_label}{/[\u4e00-\u9fff]/.test(item.semester) ? '：' : ': '}</span>{item.courses.join('; ')}{/[\u4e00-\u9fff]/.test(item.semester) ? '。' : '.'}</p>}
+                    {item.recognition && <p className={styles.recognition} data-teaching-recognition>{item.recognition}{/[\u4e00-\u9fff]/.test(item.recognition_institution || '') ? '，' : ', '}{item.recognition_institution}</p>}
                 </article>)}
             </div>
         </section>)}
