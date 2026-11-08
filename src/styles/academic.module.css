@@ -392,3 +392,9 @@
   .academic :global([data-academic='page']), .academic :global([data-academic='document-page']) { padding: 40px 24px 64px; }
   .academic :global([data-academic='columns']) { grid-template-columns: minmax(0, 1fr); gap: 40px; }
 }
+
+/* Menu stays where it is; only the language and theme controls sit at the window's right edge. */
+.academic :global([data-academic='nav-surface']) { position: relative; }
+@media (min-width: 1024px) {
+  .academic :global([data-academic='nav-controls']) { position: absolute; right: 40px; top: 50%; transform: translateY(-50%); }
+}
