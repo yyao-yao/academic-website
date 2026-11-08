@@ -1,7 +1,7 @@
 "use client";
 
 import { useId, useState } from 'react';
-import { DocumentTextIcon, BookOpenIcon, LinkIcon } from '@heroicons/react/24/outline';
+import { DocumentTextIcon, BookOpenIcon } from '@heroicons/react/24/outline';
 import type { Author, Publication } from '@/types/publication';
 import type { PublicationPageConfig } from '@/types/page';
 import FormattedBibTeXText from './FormattedBibTeXText';
@@ -59,19 +59,20 @@ function CitationAuthors({ authors }: { authors: Author[] }) {
     </span>)}</>;
 }
 
-/** PDF, DOI and Abstract buttons. Each one appears only when its data exists in publications.bib. */
-function PublicationActions({ publication: p }: { publication: Publication }) {
+/** Details line with PDF, DOI and Abstract as small text links at the end.
+ *  Each link appears only when its data exists in publications.bib. */
+function DetailsWithLinks({ publication: p }: { publication: Publication }) {
     const [open, setOpen] = useState(false);
     const id = useId();
-    if (!p.pdfUrl && !p.doi && !p.abstract) return null;
     return <>
-        <div className={styles.controls} data-publication-actions>
-            {p.pdfUrl && <a href={p.pdfUrl} target="_blank" rel="noopener noreferrer"><DocumentTextIcon />PDF</a>}
-            {p.doi && <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener noreferrer"><LinkIcon />DOI</a>}
-            {p.abstract && <button type="button" aria-expanded={open} aria-controls={id} onClick={() => setOpen(!open)}>
-                <BookOpenIcon />Abstract
-            </button>}
-        </div>
+        <p data-publication-details>
+            <PublicationDetails publication={p} />
+            {(p.pdfUrl || p.doi || p.abstract) && <span className={styles.links} data-publication-actions>
+                {p.pdfUrl && <a href={p.pdfUrl} target="_blank" rel="noopener noreferrer">PDF</a>}
+                {p.doi && <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener noreferrer">DOI ↗</a>}
+                {p.abstract && <button type="button" aria-expanded={open} aria-controls={id} onClick={() => setOpen(!open)}>Abstract</button>}
+            </span>}
+        </p>
         {p.abstract && open && <div id={id} className={styles.abstract}><p>{p.abstract}</p></div>}
     </>;
 }
@@ -88,8 +89,7 @@ export default function ResearchPage({ config, publications }: { config: Publica
                     <div className={styles.body}>
                         <h3><FormattedBibTeXText nodes={p.titleNodes} fallback={p.title} /></h3>
                         <p data-publication-authors><CitationAuthors authors={p.authors} />. {p.year}.</p>
-                        <p data-publication-details><PublicationDetails publication={p} /></p>
-                        <PublicationActions publication={p} />
+                        <DetailsWithLinks publication={p} />
                     </div>
                 </article>)}
             </div>
