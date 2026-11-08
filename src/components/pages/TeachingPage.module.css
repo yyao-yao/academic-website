@@ -5,8 +5,8 @@
 .entry { padding: 0; }
 .entry + .entry { margin-top: 36px; }
 .page .entry h3 { font-size: 17px; font-weight: 600; line-height: 1.5; margin: 0 0 8px; color: var(--ink); letter-spacing: -.01em; }
-.entry p { font-size: 15px; line-height: 1.6; margin: 2px 0 0; color: var(--secondary); }
+.entry p { font-size: 15px; line-height: 1.6; margin: 2px 0 0; padding-left: 24px; color: var(--secondary); }
 .label { color: var(--ink); }
 .recognition { font-weight: 600; }
 .page .entry .recognition { color: var(--link); }
-@media(max-width:640px) { .title { font-size: 30px; margin-bottom: 40px; } .section + .section { margin-top: 48px; } }
+@media(max-width:640px) { .entry p, .controls { padding-left: 16px; } .title { font-size: 30px; margin-bottom: 40px; } .section + .section { margin-top: 48px; } }
