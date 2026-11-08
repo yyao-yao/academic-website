@@ -1,21 +1,23 @@
 import type { CardPageConfig } from '@/types/page';
 import styles from './TeachingPage.module.css';
 
-/** Traditional academic appointments, with recognition and courses nested in place. */
+/** Teaching appointments: dates in a left column, course and details on the right. */
 export default function TeachingPage({ config }: { config: CardPageConfig }) {
     return <div className={styles.page} data-teaching-page>
         <h1 className={styles.title}>{config.title}</h1>
-        <h2>{config.description}</h2>
         {config.teaching?.map(section => <section key={section.id} className={styles.section} aria-labelledby={section.id}>
-            <h3 id={section.id}>{section.title}</h3>
-            <ul className={styles.appointments}>
-                {section.items.map(item => <li key={`${item.institution}-${item.title}`} data-teaching-appointment>
-                    {item.title === item.institution ? <>{item.institution}, {item.semester}.</>
-                        : <>{item.title}, Undergraduate, {item.institution}, {item.semester}.</>}
-                    {item.recognition && <ul><li data-teaching-recognition>{item.recognition}, {item.recognition_institution}.</li></ul>}
-                    {item.courses && <ul><li><strong>{item.courses_label}:</strong> {item.courses.join('; ')}.</li></ul>}
-                </li>)}
-            </ul>
+            <h2 id={section.id}>{section.title}</h2>
+            <div>
+                {section.items.map(item => <article key={`${item.institution}-${item.title}`} className={styles.entry} data-teaching-appointment>
+                    <span className={styles.date}>{item.semester}</span>
+                    <div className={styles.body}>
+                        <h3>{item.title}</h3>
+                        {item.title !== item.institution && <p>Undergraduate, {item.institution}</p>}
+                        {item.courses && <p><span className={styles.label}>{item.courses_label}:</span> {item.courses.join('; ')}.</p>}
+                        {item.recognition && <p className={styles.recognition} data-teaching-recognition>{item.recognition}, {item.recognition_institution}</p>}
+                    </div>
+                </article>)}
+            </div>
         </section>)}
     </div>;
 }

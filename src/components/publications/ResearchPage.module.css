@@ -1,16 +1,19 @@
-.page { max-width: 880px; margin-inline: auto; font-family: var(--font-editorial); color: var(--ink); }
-.title { font-size: 36px; line-height: 1.2; margin: 0 0 48px; }
+.page { max-width: 760px; margin-inline: auto; font-family: var(--font-editorial); color: var(--ink); }
+.title { font-size: 36px; line-height: 1.2; margin: 0 0 56px; }
 .section + .section { margin-top: 64px; }
-.section h2 { font-size: 24px; line-height: 1.4; margin: 0 0 24px; }
+.page .section h2 { font-family: var(--font-metadata); font-size: 13px; font-weight: 400; letter-spacing: .08em; text-transform: uppercase; line-height: 1.4; color: var(--link); margin: 0 0 8px; padding-bottom: 10px; border-bottom: 1px solid var(--rule); }
 .entries { margin: 0; }
-.entry + .entry { margin-top: 16px; padding-top: 15px; border-top: 1px solid var(--rule); }
-.page .entry h3 { font-size: 17px; font-weight: 500; line-height: 1.5; margin: 0; color: var(--ink); }
-.entry p { font-size: 15px; line-height: 1.75; margin: 4px 0 0; color: var(--secondary); }
+.entry { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 20px; padding: 20px 0; }
+.entry + .entry { border-top: 1px solid var(--rule); }
+.year { font-family: var(--font-metadata); font-size: 13px; line-height: 1.6; color: var(--secondary); padding-top: 2px; }
+.body { min-width: 0; }
+.page .entry h3 { font-size: 17px; font-weight: 600; line-height: 1.5; margin: 0; color: var(--ink); letter-spacing: -.01em; }
+.entry p { font-size: 15px; line-height: 1.7; margin: 4px 0 0; color: var(--secondary); }
 .owner { color: var(--link); font-weight: 600; }
-.publicationLink { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
-.publicationLink:hover, .publicationLink:focus-visible { color: var(--link); }
 .controls { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-.controls button, .controls a { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border: 1px solid var(--control-border); border-radius: 3px; font: inherit; font-size: 12px; color: var(--secondary); background: transparent; }
+.controls button, .controls a { display: inline-flex; align-items: center; gap: 6px; min-height: 30px; padding: 3px 10px; border: 1px solid var(--control-border); border-radius: 3px; font-family: var(--font-metadata); font-size: 12px; color: var(--secondary); background: transparent; text-decoration: none; cursor: pointer; }
+.controls button:hover, .controls a:hover, .controls [aria-expanded='true'] { color: var(--link); border-color: var(--link); }
 .controls svg { width: 14px; height: 14px; }
-.abstract { margin-top: 12px; padding-left: 16px; border-left: 1px solid var(--rule); }
-@media(max-width:640px) { .title { font-size: 30px; margin-bottom: 36px; } .section + .section { margin-top: 48px; } .section h2 { font-size: 22px; } }
+.abstract { margin-top: 12px; padding-left: 16px; border-left: 1px solid var(--link); }
+.abstract p { color: var(--ink); line-height: 1.8; }
+@media(max-width:640px) { .title { font-size: 30px; margin-bottom: 40px; } .section + .section { margin-top: 48px; } .entry { grid-template-columns: minmax(0, 1fr); gap: 2px; } }

@@ -6,7 +6,7 @@
   --blue: #3678e8;
   --link: #245fcb;
   --rule: rgba(65, 89, 123, .18);
-  --grid: rgba(65, 89, 123, .035);
+  --grid: rgba(65, 89, 123, .02);
   --surface: #f5f6f8;
   --control-border: #7f8da2;
   --font-editorial: Arial, Helvetica, 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif;
@@ -38,7 +38,7 @@
   --blue: #6c9ffc;
   --link: #6c9ffc;
   --rule: rgba(145, 169, 205, .20);
-  --grid: rgba(145, 169, 205, .028);
+  --grid: rgba(145, 169, 205, .016);
   --surface: #121b29;
   --control-border: #64758d;
 }

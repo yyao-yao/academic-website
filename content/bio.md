@@ -1,5 +1,5 @@
-I am a PhD student at the School of Science, University of Example, advised by [Prof. Advisor One](https://example.com) and [Dr. Advisor Two](https://example.com).
+I am a PhD candidate in Political Science at the University of Georgia, advised by Dr. Johnson and Dr. Krause.
 
-Prior to this, I obtained a BSc degree with First Class Honours in Natural Science from the University of Example.
+I study bureaucratic politics and the separation of powers: how Congress, the president, and the courts each shape what federal agencies do, through oversight, rulemaking, and judicial review. A second line of work studies the presidency.
 
-My current research focuses on investigating the mathematical principles of natural philosophy.
+Before UGA, I earned an LL.B. from China University of Political Science and Law.

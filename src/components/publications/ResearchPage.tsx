@@ -1,7 +1,7 @@
 "use client";
 
 import { useId, useState } from 'react';
-import { DocumentTextIcon, BookOpenIcon } from '@heroicons/react/24/outline';
+import { DocumentTextIcon, BookOpenIcon, LinkIcon } from '@heroicons/react/24/outline';
 import type { Author, Publication } from '@/types/publication';
 import type { PublicationPageConfig } from '@/types/page';
 import FormattedBibTeXText from './FormattedBibTeXText';
@@ -59,6 +59,28 @@ function CitationAuthors({ authors }: { authors: Author[] }) {
     </span>)}</>;
 }
 
+/** PDF, DOI and Abstract buttons. Each one appears only when its data exists in publications.bib. */
+function PublicationActions({ publication: p }: { publication: Publication }) {
+    const [open, setOpen] = useState(false);
+    const id = useId();
+    if (!p.pdfUrl && !p.doi && !p.abstract) return null;
+    return <>
+        <div className={styles.controls} data-publication-actions>
+            {p.pdfUrl && <a href={p.pdfUrl} target="_blank" rel="noopener noreferrer"><DocumentTextIcon />PDF</a>}
+            {p.doi && <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener noreferrer"><LinkIcon />DOI</a>}
+            {p.abstract && <button type="button" aria-expanded={open} aria-controls={id} onClick={() => setOpen(!open)}>
+                <BookOpenIcon />Abstract
+            </button>}
+        </div>
+        {p.abstract && open && <div id={id} className={styles.abstract}><p>{p.abstract}</p></div>}
+    </>;
+}
+
+/** Pulls a four-digit year out of a free-text details line, for the year column. */
+function yearFrom(text?: string) {
+    return text?.match(/\b(19|20)\d{2}\b/)?.[0] ?? '';
+}
+
 export default function ResearchPage({ config, publications }: { config: PublicationPageConfig; publications: Publication[] }) {
     const research = config.research;
     if (!research) return null;
@@ -68,11 +90,13 @@ export default function ResearchPage({ config, publications }: { config: Publica
             <h2 id={`research-${category.id}`}>{category.title}</h2>
             <div className={styles.entries}>
                 {publications.filter(p => p.category === category.id).sort((a, b) => b.year - a.year).map(p => <article key={p.id} className={styles.entry} data-publication={p.id}>
-                    <h3>{p.doi
-                        ? <a className={styles.publicationLink} href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener noreferrer"><FormattedBibTeXText nodes={p.titleNodes} fallback={p.title} /></a>
-                        : <FormattedBibTeXText nodes={p.titleNodes} fallback={p.title} />}</h3>
-                    <p data-publication-authors><CitationAuthors authors={p.authors} />. {p.year}.</p>
-                    <p data-publication-details><PublicationDetails publication={p} /></p>
+                    <span className={styles.year}>{p.year}</span>
+                    <div className={styles.body}>
+                        <h3><FormattedBibTeXText nodes={p.titleNodes} fallback={p.title} /></h3>
+                        <p data-publication-authors><CitationAuthors authors={p.authors} /></p>
+                        <p data-publication-details><PublicationDetails publication={p} /></p>
+                        <PublicationActions publication={p} />
+                    </div>
                 </article>)}
             </div>
         </section>)}
@@ -80,11 +104,14 @@ export default function ResearchPage({ config, publications }: { config: Publica
             <h2 id={section.id}>{section.title}</h2>
             <div className={styles.entries}>
                 {section.items.map(item => <article key={item.title} className={styles.entry}>
-                    <h3>{item.title}</h3>
-                    {section.id === 'research-honors' && <>
-                        <p>{item.details.replace(/ · /g, ', ')}.</p>
-                        <p>{item.recognition}.</p>
-                    </>}
+                    <span className={styles.year}>{section.id === 'research-honors' ? yearFrom(item.details) : ''}</span>
+                    <div className={styles.body}>
+                        <h3>{item.title}</h3>
+                        {section.id === 'research-honors' && <>
+                            <p>{item.recognition}.</p>
+                            <p>{item.details.replace(/ · (19|20)\d{2}$/, '').replace(/ · /g, ', ')}.</p>
+                        </>}
+                    </div>
                 </article>)}
             </div>
         </section>)}
