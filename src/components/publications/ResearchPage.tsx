@@ -33,7 +33,6 @@ function PublicationDetails({ publication: p }: { publication: Publication }) {
 export function MaterialControls({ paper, abstract, pending, zh }: { paper?: string; abstract?: string; pending: boolean; zh: boolean }) {
     const [open, setOpen] = useState(false);
     const id = useId();
-    const zh = useLocaleStore(state => state.locale).startsWith('zh');
     if (!(pending && paper) && !abstract) return null;
     return <>
         <div className={styles.controls}>
