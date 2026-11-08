@@ -4,11 +4,11 @@
   --portal-muted: #64748b;
   --portal-blue: #1f5fbf;
   --portal-line: #eff2f6;
-  position: fixed;
-  inset: 0;
-  z-index: 100;
+  position: relative;
   min-height: 100svh;
-  overflow: auto;
+  padding-top: 80px;
+  box-sizing: border-box;
+  overflow: hidden;
   isolation: isolate;
   color: var(--portal-ink);
   background-color: var(--portal-bg);
@@ -44,7 +44,7 @@
 .themes button[aria-pressed='true'] { color: var(--portal-blue); background: color-mix(in srgb, var(--portal-blue) 10%, transparent); }
 .portal button:focus-visible { outline: 2px solid var(--portal-blue); outline-offset: 5px; }
 .coordinates { position: absolute; left: 40px; right: 40px; top: 142px; display: flex; justify-content: space-between; color: var(--portal-muted); font-size: 9px; letter-spacing: .12em; }
-.content { width: min(1100px, 90%); margin: max(65px, calc((100svh - 520px) / 2 - 40px)) auto 135px; text-align: center; }
+.content { width: min(1100px, 90%); margin: max(24px, calc((100svh - 520px) / 2 - 120px)) auto 135px; text-align: center; }
 .eyebrow { color: var(--portal-muted); font-size: 10px; letter-spacing: .2em; display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 30px; }
 .statusDot { display: inline-block; width: 5px; height: 5px; background: var(--portal-blue); border-radius: 50%; box-shadow: 0 0 8px color-mix(in srgb, var(--portal-blue) 25%, transparent); }
 .title { position: relative; width: 100%; max-width: 1100px; margin-inline: auto; height: auto; aspect-ratio: 4.9; }

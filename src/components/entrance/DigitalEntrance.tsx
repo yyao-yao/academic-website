@@ -1,17 +1,13 @@
 'use client';
 
-import { useEffect, useRef, type ComponentProps } from 'react';
-import { ThemeToggle } from '@/components/ui/ThemeToggle';
-import LanguageToggle from '@/components/ui/LanguageToggle';
+import { useEffect, useRef } from 'react';
 import Link from 'next/link';
-import NavigationLink from '@/components/ui/NavigationLink';
-import { getPrimaryNavigation } from '@/lib/navigation';
 import { useLocaleStore } from '@/lib/stores/localeStore';
 import ParticleTitle from './ParticleTitle';
 import { animateSignals } from './animateSignals';
 import styles from './entrance.module.css';
 
-export default function DigitalEntrance({ cvAvailable, i18n }: { cvAvailable: boolean; i18n: ComponentProps<typeof LanguageToggle>['i18n'] }) {
+export default function DigitalEntrance() {
   const locale = useLocaleStore(state => state.locale);
   const zh = locale.startsWith('zh');
   const portal = useRef<HTMLElement>(null);
@@ -35,16 +31,6 @@ export default function DigitalEntrance({ cvAvailable, i18n }: { cvAvailable: bo
         <span className={styles.signal} data-signal data-glint><svg viewBox="0 0 16 16"><path d="m7 2 1.2 4.8L13 8l-4.8 1.2L7 14 5.8 9.2 1 8l4.8-1.2ZM13 1v3m-1.5-1.5h3" /></svg></span>
         <span className={styles.signal} data-signal><svg viewBox="0 0 16 16"><path d="M8 13 2.8 7.8C-.5 4.5 4 .5 8 4c4-3.5 8.5.5 5.2 3.8Z" /></svg></span>
       </div>
-      <header className={styles.header}>
-        <div className={styles.identity}><span className={styles.mark} aria-hidden="true">✳</span> {zh ? '佐治亚大学 · 政治学' : 'University of Georgia · Political Science'}</div>
-        <nav className={styles.homeNav} aria-label="Primary navigation">
-          {getPrimaryNavigation(locale).map(item => <NavigationLink cvAvailable={cvAvailable} key={item.id} href={item.href} aria-current={item.id === 'home' ? 'page' : undefined}>{item.title}</NavigationLink>)}
-        </nav>
-        <div className={styles.controls} data-no-toggle>
-          {i18n.enabled && i18n.switcher && <LanguageToggle i18n={i18n} />}
-          <ThemeToggle />
-        </div>
-      </header>
 
       <div className={styles.content}>
         <h1 id="portal-title" className={styles.srOnly}>Yao Yao — Home</h1>

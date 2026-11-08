@@ -10,7 +10,8 @@ export default function EntranceBoundary({ children, navigation, footer }: {
   footer: React.ReactNode;
 }) {
   const pathname = usePathname();
-  if (pathname === '/') return <main key={pathname}>{children}</main>;
+  // Home uses the same top bar as every other page.
+  if (pathname === '/') return <div className={`${styles.academic} min-h-screen`}>{navigation}<main key={pathname}>{children}</main></div>;
   // Keep the editorial scope explicit; Home and other routes retain their chrome.
   const isAcademic = ['/about', '/publications', '/teaching', '/cv', '/photography'].includes(pathname.replace(/\/$/, ''));
   const chrome = <>
