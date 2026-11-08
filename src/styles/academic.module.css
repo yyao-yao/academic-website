@@ -393,10 +393,14 @@
   .academic :global([data-academic='columns']) { grid-template-columns: minmax(0, 1fr); gap: 40px; }
 }
 
-/* Top bar: name at the left edge, language and theme at the right edge,
-   menu in between with equal space on both sides. */
+/* Top bar: name and menu stay in their original place (1100px frame).
+   Only the language and theme controls move to the window's right edge.
+   An invisible copy of the controls keeps the menu from shifting. */
+.academic :global([data-academic='nav-surface']) { position: relative; }
 @media (min-width: 1024px) {
-  .academic :global([data-academic='nav-frame']) { max-width: none; padding-inline: 40px; }
-  .academic :global([data-academic='nav-desktop']) { display: contents; }
-  .academic :global([data-academic='nav-right']) { margin: 0; }
+  .academic :global([data-academic='nav-controls']) { position: absolute; right: 40px; top: 50%; transform: translateY(-50%); }
+  .academic :global([data-academic='nav-spacer']) { visibility: hidden; pointer-events: none; }
+}
+@media (max-width: 1023px) {
+  .academic :global([data-academic='nav-spacer']) { display: none; }
 }

@@ -125,7 +125,7 @@ export default function Navigation({
                   </Link>
                 </motion.div>
 
-                <div data-academic="nav-desktop" className="hidden lg:block">
+                <div className="hidden lg:block">
                   <div data-academic="nav-right" className="ml-10 flex items-center space-x-3">
                     <div
                       ref={navContainerRef}
@@ -181,6 +181,10 @@ export default function Navigation({
                           </NavigationLink>
                         );
                       })}
+                    </div>
+                    <div data-academic="nav-spacer" aria-hidden="true" inert className="flex items-center gap-3">
+                      <LanguageToggle i18n={i18n} />
+                      <ThemeToggle />
                     </div>
                   </div>
                   <div data-academic="nav-controls" className="flex items-center gap-2">
