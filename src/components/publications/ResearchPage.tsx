@@ -97,11 +97,10 @@ export default function ResearchPage({ config, publications }: { config: Publica
             <div className={styles.entries}>
                 {section.items.map(item => <article key={item.title} className={styles.entry}>
                     <div className={styles.body}>
-                        <h3>{item.title}</h3>
-                        {section.id === 'research-honors' && <>
-                            <p>{item.details.replace(/ · /g, ', ')}.</p>
-                            <p>{item.recognition}.</p>
-                        </>}
+                        {section.id === 'research-honors' ? <>
+                            <h3>{item.recognition}</h3>
+                            <p>“{item.title}.” {item.details.replace(/ · /g, ', ')}.</p>
+                        </> : <h3>{item.title}</h3>}
                     </div>
                 </article>)}
             </div>
