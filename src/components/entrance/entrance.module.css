@@ -5,6 +5,7 @@
   --portal-blue: #1f5fbf;
   --portal-line: #eff2f6;
   position: relative;
+  width: 100%;
   min-height: 100svh;
   padding-top: 80px;
   box-sizing: border-box;
@@ -166,3 +167,7 @@
 .controls [data-academic='language-control'] span { font-size: inherit; }
 .controls [data-academic='theme-control']:hover,
 .controls [data-academic='language-control']:hover { border-color: var(--portal-line); color: var(--portal-blue); }
+
+/* Keep the home content centered in the window. */
+.content { margin-left: auto; margin-right: auto; }
+.title { margin-left: auto; margin-right: auto; }

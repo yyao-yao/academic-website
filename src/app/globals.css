@@ -254,3 +254,6 @@ body {
   /* Soften card borders in dark mode only */
   border-color: rgba(148, 163, 184, 0.24);
 }
+
+/* Same page width with or without a scrollbar, so the top bar never shifts between pages. */
+html { scrollbar-gutter: stable; }

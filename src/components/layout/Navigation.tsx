@@ -182,10 +182,10 @@ export default function Navigation({
                         );
                       })}
                     </div>
-                    <div data-academic="nav-controls" className="flex items-center gap-2">
-                      <LanguageToggle i18n={i18n} />
-                      <ThemeToggle />
-                    </div>
+                  </div>
+                  <div data-academic="nav-controls" className="flex items-center gap-2">
+                    <LanguageToggle i18n={i18n} />
+                    <ThemeToggle />
                   </div>
                 </div>
 
