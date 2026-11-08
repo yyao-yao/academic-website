@@ -14,7 +14,7 @@ export interface PublicationPageConfig extends BasePageConfig {
         sections: Array<{
             id: string;
             title: string;
-            items: Array<{ title: string; author?: string; details: string; recognition?: string }>;
+            items: Array<{ title: string; author?: string; details: string; recognition?: string; abstract?: string; pdf?: string }>;
         }>;
     };
 }

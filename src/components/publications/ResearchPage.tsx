@@ -74,6 +74,20 @@ function PublicationActions({ publication: p }: { publication: Publication }) {
     </>;
 }
 
+/** PDF and Abstract chips for working papers. Each appears only when publications.toml has it. */
+function PaperActions({ pdf, abstract }: { pdf?: string; abstract?: string }) {
+    const [open, setOpen] = useState(false);
+    const id = useId();
+    if (!pdf && !abstract) return null;
+    return <>
+        <div className={styles.controls} data-publication-actions>
+            {pdf && <a href={pdf} target="_blank" rel="noopener noreferrer">PDF</a>}
+            {abstract && <button type="button" aria-expanded={open} aria-controls={id} onClick={() => setOpen(!open)}>Abstract</button>}
+        </div>
+        {abstract && open && <div id={id} className={styles.abstract}><p>{abstract}</p></div>}
+    </>;
+}
+
 export default function ResearchPage({ config, publications }: { config: PublicationPageConfig; publications: Publication[] }) {
     const research = config.research;
     if (!research) return null;
@@ -100,7 +114,10 @@ export default function ResearchPage({ config, publications }: { config: Publica
                         {section.id === 'research-honors' ? <>
                             <h3>{item.recognition}</h3>
                             <p>“{item.title}.” {item.details.replace(/ · /g, ', ')}.</p>
-                        </> : <h3>{item.title}</h3>}
+                        </> : <>
+                            <h3>{item.title}</h3>
+                            <PaperActions pdf={item.pdf} abstract={item.abstract} />
+                        </>}
                     </div>
                 </article>)}
             </div>
