@@ -9,8 +9,8 @@ export default function TeachingPage({ config }: { config: CardPageConfig }) {
             <h2 id={section.id}>{section.title}</h2>
             <div>
                 {section.items.map(item => <article key={`${item.institution}-${item.title}`} className={styles.entry} data-teaching-appointment>
-                    <div className={styles.head}><h3>{item.title}</h3><span className={styles.year}>{item.semester}</span></div>
-                    {item.title !== item.institution && <p>Undergraduate, {item.institution}</p>}
+                    <h3>{item.title}</h3>
+                    <p>{item.title !== item.institution ? `Undergraduate, ${item.institution}. ` : ''}{item.semester}.</p>
                     {item.courses && <p><span className={styles.label}>{item.courses_label}:</span> {item.courses.join('; ')}.</p>}
                     {item.recognition && <p className={styles.recognition} data-teaching-recognition>{item.recognition}, {item.recognition_institution}</p>}
                 </article>)}

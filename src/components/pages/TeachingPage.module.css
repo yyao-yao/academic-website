@@ -1,15 +1,12 @@
-.page { max-width: 920px; margin-inline: auto; color: var(--ink); font-family: var(--font-editorial); }
+.page { max-width: 720px; margin-inline: auto; color: var(--ink); font-family: var(--font-editorial); }
 .title { font-size: 36px; line-height: 1.2; margin: 0 0 40px; }
-.section { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 40px; padding: 36px 0; border-top: 1px solid var(--rule); }
-.page .section h2 { font-family: var(--font-editorial); font-size: 14px; font-weight: 500; letter-spacing: 0; text-transform: none; line-height: 1.5; color: var(--secondary); margin: 2px 0 0; padding: 0; border: 0; }
-.entry { padding: 0; }
-.entry + .entry { margin-top: 32px; }
-.head { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; }
-.year { flex-shrink: 0; font-size: 14px; color: var(--secondary); font-variant-numeric: tabular-nums; white-space: nowrap; }
-.page .entry h3 { font-size: 17px; font-weight: 600; line-height: 1.45; margin: 0 0 6px; color: var(--ink); letter-spacing: -.01em; }
+.section + .section { margin-top: 48px; }
+.page .section h2 { font-family: var(--font-editorial); font-size: 22px; font-weight: 600; letter-spacing: -.01em; text-transform: none; line-height: 1.35; color: var(--ink); margin: 0 0 20px; padding: 0; border: 0; }
+.entry + .entry { margin-top: 24px; }
+.page .entry h3 { font-size: 17px; font-weight: 600; line-height: 1.45; margin: 0 0 4px; color: var(--ink); letter-spacing: -.005em; }
 .entry p { font-size: 15px; line-height: 1.6; margin: 2px 0 0; color: var(--secondary); }
 .page em { font-synthesis: none; }
 .label { color: var(--ink); }
 .recognition { font-weight: 600; }
 .page .entry .recognition { color: var(--link); }
-@media(max-width:760px) { .section { grid-template-columns: minmax(0, 1fr); gap: 20px; padding: 28px 0; } .head { flex-direction: column; gap: 2px; } .head .year { order: 2; } .title { font-size: 30px; margin-bottom: 32px; } }
+@media(max-width:640px) { .title { font-size: 30px; margin-bottom: 32px; } .section + .section { margin-top: 40px; } .page .section h2 { font-size: 20px; } }

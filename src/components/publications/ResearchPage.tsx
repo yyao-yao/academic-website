@@ -26,6 +26,7 @@ function PublicationDetails({ publication: p }: { publication: Publication }) {
         {p.journal ? <><em>{p.journal}</em>{p.volume && ` ${p.volume}`}{p.issue && `(${p.issue})`}{pages && `: ${pages}`}.</>
             : <>{p.editors?.length ? 'In ' : ''}<em>{p.conference}</em>{p.edition && `, ${editionLabel(p.edition)}`}{p.editors?.length ? `, edited by ${editorNames(p)}.` : ','}{pages && ` ${pages}.`}{p.address && ` ${p.address}:`}{p.publisher && ` ${p.publisher}.`}</>}
         {p.language === 'Chinese' && ' (In Chinese)'}
+        {' '}{p.year}.
     </>;
 }
 
@@ -87,7 +88,7 @@ export default function ResearchPage({ config, publications }: { config: Publica
             <div className={styles.entries}>
                 {publications.filter(p => p.category === category.id).sort((a, b) => b.year - a.year).map(p => <article key={p.id} className={styles.entry} data-publication={p.id}>
                     <div className={styles.body}>
-                        <div className={styles.head}><h3><FormattedBibTeXText nodes={p.titleNodes} fallback={p.title} /></h3><span className={styles.year}>{p.year}</span></div>
+                        <h3><FormattedBibTeXText nodes={p.titleNodes} fallback={p.title} /></h3>
                         <p data-publication-authors><CitationAuthors authors={p.authors} /></p>
                         <DetailsWithLinks publication={p} />
                     </div>
@@ -99,10 +100,10 @@ export default function ResearchPage({ config, publications }: { config: Publica
             <div className={styles.entries}>
                 {section.items.map(item => <article key={item.title} className={styles.entry}>
                     <div className={styles.body}>
-                        <div className={styles.head}><h3>{item.title}</h3><span className={styles.year}>{section.id === 'research-honors' ? item.details.match(/\b(19|20)\d{2}\b/)?.[0] : ''}</span></div>
+                        <h3>{item.title}</h3>
                         {section.id === 'research-honors' && <>
+                            <p>{item.details.replace(/ · /g, ', ')}.</p>
                             <p>{item.recognition}.</p>
-                            <p>{item.details.replace(/ · (19|20)\d{2}$/, '').replace(/ · /g, ', ')}.</p>
                         </>}
                     </div>
                 </article>)}
