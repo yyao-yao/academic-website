@@ -76,11 +76,6 @@ function PublicationActions({ publication: p }: { publication: Publication }) {
     </>;
 }
 
-/** Pulls a four-digit year out of a free-text details line, for the year column. */
-function yearFrom(text?: string) {
-    return text?.match(/\b(19|20)\d{2}\b/)?.[0] ?? '';
-}
-
 export default function ResearchPage({ config, publications }: { config: PublicationPageConfig; publications: Publication[] }) {
     const research = config.research;
     if (!research) return null;
@@ -90,10 +85,9 @@ export default function ResearchPage({ config, publications }: { config: Publica
             <h2 id={`research-${category.id}`}>{category.title}</h2>
             <div className={styles.entries}>
                 {publications.filter(p => p.category === category.id).sort((a, b) => b.year - a.year).map(p => <article key={p.id} className={styles.entry} data-publication={p.id}>
-                    <span className={styles.year}>{p.year}</span>
                     <div className={styles.body}>
                         <h3><FormattedBibTeXText nodes={p.titleNodes} fallback={p.title} /></h3>
-                        <p data-publication-authors><CitationAuthors authors={p.authors} /></p>
+                        <p data-publication-authors><CitationAuthors authors={p.authors} />. {p.year}.</p>
                         <p data-publication-details><PublicationDetails publication={p} /></p>
                         <PublicationActions publication={p} />
                     </div>
@@ -104,12 +98,11 @@ export default function ResearchPage({ config, publications }: { config: Publica
             <h2 id={section.id}>{section.title}</h2>
             <div className={styles.entries}>
                 {section.items.map(item => <article key={item.title} className={styles.entry}>
-                    <span className={styles.year}>{section.id === 'research-honors' ? yearFrom(item.details) : ''}</span>
                     <div className={styles.body}>
                         <h3>{item.title}</h3>
                         {section.id === 'research-honors' && <>
+                            <p>{item.details.replace(/ · /g, ', ')}.</p>
                             <p>{item.recognition}.</p>
-                            <p>{item.details.replace(/ · (19|20)\d{2}$/, '').replace(/ · /g, ', ')}.</p>
                         </>}
                     </div>
                 </article>)}

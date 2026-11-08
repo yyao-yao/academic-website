@@ -3,9 +3,8 @@
 .section + .section { margin-top: 64px; }
 .page .section h2 { font-family: var(--font-metadata); font-size: 13px; font-weight: 400; letter-spacing: .08em; text-transform: uppercase; line-height: 1.4; color: var(--link); margin: 0 0 8px; padding-bottom: 10px; border-bottom: 1px solid var(--rule); }
 .entries { margin: 0; }
-.entry { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 20px; padding: 20px 0; }
+.entry { padding: 20px 0; }
 .entry + .entry { border-top: 1px solid var(--rule); }
-.year { font-family: var(--font-metadata); font-size: 13px; line-height: 1.6; color: var(--secondary); padding-top: 2px; }
 .body { min-width: 0; }
 .page .entry h3 { font-size: 17px; font-weight: 600; line-height: 1.5; margin: 0; color: var(--ink); letter-spacing: -.01em; }
 .entry p { font-size: 15px; line-height: 1.7; margin: 4px 0 0; color: var(--secondary); }
@@ -16,4 +15,4 @@
 .controls svg { width: 14px; height: 14px; }
 .abstract { margin-top: 12px; padding-left: 16px; border-left: 1px solid var(--link); }
 .abstract p { color: var(--ink); line-height: 1.8; }
-@media(max-width:640px) { .title { font-size: 30px; margin-bottom: 40px; } .section + .section { margin-top: 48px; } .entry { grid-template-columns: minmax(0, 1fr); gap: 2px; } }
+@media(max-width:640px) { .title { font-size: 30px; margin-bottom: 40px; } .section + .section { margin-top: 48px; } }
