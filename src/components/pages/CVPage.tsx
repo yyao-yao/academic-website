@@ -24,11 +24,10 @@ export default function CVPage() {
             className={styles.viewer}
             src="/cv.pdf"
             title={title}
-            aria-describedby="cv-pdf-fallback"
         />}
-        <p className={styles.fallback} id="cv-pdf-fallback">
-            {canEmbed === false && <>{zh ? '此浏览器不支持 PDF 预览。' : 'PDF preview is unavailable in this browser. '}</>}
+        {canEmbed === false && <p className={styles.fallback} id="cv-pdf-fallback">
+            {zh ? '此浏览器不支持 PDF 预览。' : 'PDF preview is unavailable in this browser. '}
             <a href="/cv.pdf">{zh ? '打开 PDF' : 'Open PDF'}</a>
-        </p>
+        </p>}
     </section>;
 }
