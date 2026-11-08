@@ -59,20 +59,17 @@ function CitationAuthors({ authors }: { authors: Author[] }) {
     </span>)}</>;
 }
 
-/** Details line with PDF, DOI and Abstract as small text links at the end.
- *  Each link appears only when its data exists in publications.bib. */
-function DetailsWithLinks({ publication: p }: { publication: Publication }) {
+/** PDF, DOI and Abstract chips. Each appears only when its data exists in publications.bib. */
+function PublicationActions({ publication: p }: { publication: Publication }) {
     const [open, setOpen] = useState(false);
     const id = useId();
+    if (!p.pdfUrl && !p.doi && !p.abstract) return null;
     return <>
-        <p data-publication-details>
-            <PublicationDetails publication={p} />
-            {(p.pdfUrl || p.doi || p.abstract) && <span className={styles.links} data-publication-actions>
-                {p.pdfUrl && <a href={p.pdfUrl} target="_blank" rel="noopener noreferrer">PDF</a>}
-                {p.doi && <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener noreferrer">DOI ↗</a>}
-                {p.abstract && <button type="button" aria-expanded={open} aria-controls={id} onClick={() => setOpen(!open)}>Abstract</button>}
-            </span>}
-        </p>
+        <div className={styles.controls} data-publication-actions>
+            {p.pdfUrl && <a href={p.pdfUrl} target="_blank" rel="noopener noreferrer">PDF</a>}
+            {p.doi && <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener noreferrer">DOI</a>}
+            {p.abstract && <button type="button" aria-expanded={open} aria-controls={id} onClick={() => setOpen(!open)}>Abstract</button>}
+        </div>
         {p.abstract && open && <div id={id} className={styles.abstract}><p>{p.abstract}</p></div>}
     </>;
 }
@@ -89,7 +86,8 @@ export default function ResearchPage({ config, publications }: { config: Publica
                     <div className={styles.body}>
                         <h3><FormattedBibTeXText nodes={p.titleNodes} fallback={p.title} /></h3>
                         <p data-publication-authors><CitationAuthors authors={p.authors} />. {p.year}.</p>
-                        <DetailsWithLinks publication={p} />
+                        <p data-publication-details><PublicationDetails publication={p} /></p>
+                        <PublicationActions publication={p} />
                     </div>
                 </article>)}
             </div>
