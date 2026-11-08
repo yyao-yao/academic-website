@@ -139,7 +139,7 @@
 }
 
 /* Route navigation and transparent keyboard target; approved scene rules above stay intact. */
-.homeNav { display: flex; align-items: center; gap: 19px; font: 10px 'SFMono-Regular', Consolas, monospace; }
+.homeNav { display: flex; align-items: center; gap: 26px; font: 15.5px 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace; }
 .homeNav a { color: var(--portal-muted); text-decoration: none; padding: 10px 0; }
 .homeNav a:hover, .homeNav a[aria-current='page'] { color: var(--portal-blue); }
 .homeNav a:focus-visible { outline: 2px solid var(--portal-blue); outline-offset: 5px; }
@@ -157,3 +157,12 @@
 }
 
 .titleToggle:focus-visible { outline: 2px solid var(--portal-blue); outline-offset: 5px; }
+
+/* Same theme and language controls as the other pages */
+.controls { display: flex; align-items: center; gap: 8px; }
+.controls [data-academic='theme-control'],
+.controls [data-academic='language-control'] { border-color: transparent; background: transparent; color: var(--portal-muted); font-family: 'IBM Plex Mono', monospace; font-size: 15.5px; }
+.controls [data-academic='theme-control'] span,
+.controls [data-academic='language-control'] span { font-size: inherit; }
+.controls [data-academic='theme-control']:hover,
+.controls [data-academic='language-control']:hover { border-color: var(--portal-line); color: var(--portal-blue); }

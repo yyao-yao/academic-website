@@ -1,18 +1,18 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, type ComponentProps } from 'react';
+import { ThemeToggle } from '@/components/ui/ThemeToggle';
+import LanguageToggle from '@/components/ui/LanguageToggle';
 import Link from 'next/link';
 import NavigationLink from '@/components/ui/NavigationLink';
 import { getPrimaryNavigation } from '@/lib/navigation';
 import { useLocaleStore } from '@/lib/stores/localeStore';
-import { useThemeStore } from '@/lib/stores/themeStore';
 import ParticleTitle from './ParticleTitle';
 import { animateSignals } from './animateSignals';
 import styles from './entrance.module.css';
 
-export default function DigitalEntrance({ cvAvailable }: { cvAvailable: boolean }) {
+export default function DigitalEntrance({ cvAvailable, i18n }: { cvAvailable: boolean; i18n: ComponentProps<typeof LanguageToggle>['i18n'] }) {
   const locale = useLocaleStore(state => state.locale);
-  const { theme, setTheme } = useThemeStore();
   const zh = locale.startsWith('zh');
   const portal = useRef<HTMLElement>(null);
   const signals = useRef<HTMLDivElement>(null);
@@ -40,8 +40,9 @@ export default function DigitalEntrance({ cvAvailable }: { cvAvailable: boolean 
         <nav className={styles.homeNav} aria-label="Primary navigation">
           {getPrimaryNavigation(locale).map(item => <NavigationLink cvAvailable={cvAvailable} key={item.id} href={item.href} aria-current={item.id === 'home' ? 'page' : undefined}>{item.title}</NavigationLink>)}
         </nav>
-        <div className={styles.themes} data-no-toggle role="group" aria-label="Color theme">
-          {(['light', 'dark', 'system'] as const).map((value) => <button key={value} type="button" aria-pressed={theme === value} onClick={() => setTheme(value)}>{value}</button>)}
+        <div className={styles.controls} data-no-toggle>
+          {i18n.enabled && i18n.switcher && <LanguageToggle i18n={i18n} />}
+          <ThemeToggle />
         </div>
       </header>
 
