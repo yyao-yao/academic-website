@@ -14,4 +14,5 @@
 .controls button:hover, .controls a:hover, .controls [aria-expanded='true'] { border-color: var(--link); }
 .abstract { margin-top: 12px; padding-left: 16px; border-left: 1px solid var(--link); }
 .entry .abstract p { color: var(--ink); line-height: 1.75; }
+.entry .abstract p + p { margin-top: 10px; font-size: 14px; color: var(--secondary); }
 @media(max-width:640px) { .title { font-size: 30px; margin-bottom: 40px; } .section + .section { margin-top: 44px; } }

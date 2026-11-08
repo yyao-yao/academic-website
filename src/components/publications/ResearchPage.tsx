@@ -40,7 +40,7 @@ export function MaterialControls({ paper, abstract, pending, zh }: { paper?: str
                 <BookOpenIcon />{zh ? '摘要' : 'Abstract'}
             </button>}
         </div>
-        {abstract && open && <div id={id} className={styles.abstract}><p>{abstract}</p></div>}
+        {abstract && open && <div id={id} className={styles.abstract}>{abstract.split(/\n\s*\n/).map((para, i) => <p key={i}>{para}</p>)}</div>}
     </>;
 }
 
@@ -84,7 +84,7 @@ function PaperActions({ pdf, abstract }: { pdf?: string; abstract?: string }) {
             {pdf && <a href={pdf} target="_blank" rel="noopener noreferrer">PDF</a>}
             {abstract && <button type="button" aria-expanded={open} aria-controls={id} onClick={() => setOpen(!open)}>Abstract</button>}
         </div>
-        {abstract && open && <div id={id} className={styles.abstract}><p>{abstract}</p></div>}
+        {abstract && open && <div id={id} className={styles.abstract}>{abstract.split(/\n\s*\n/).map((para, i) => <p key={i}>{para}</p>)}</div>}
     </>;
 }
 
