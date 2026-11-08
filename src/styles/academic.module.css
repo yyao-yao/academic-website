@@ -9,7 +9,7 @@
   --grid: #eff2f6;
   --surface: #ffffff;
   --control-border: #cbd5e1;
-  --font-editorial: Inter, -apple-system, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif;
+  --font-editorial: 'Source Serif 4', Georgia, 'Noto Serif CJK SC', 'Songti SC', 'SimSun', serif;
   --font-metadata: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
   /* Existing utility colors resolve locally, including translated Markdown. */
   --background: var(--canvas);
