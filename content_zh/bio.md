@@ -1,5 +1,5 @@
-我是佐治亚大学（University of Georgia）政治学系博士候选人，导师是 Johnson 博士和 Krause 博士。
+我是佐治亚大学（University of Georgia）政治学系博士候选人、Presidential Graduate Fellow，导师是 Johnson 博士和 Krause 博士。
 
 我研究官僚政治与三权分立：国会、总统和法院如何分别通过监督、规则制定和司法审查，影响联邦机构的行为。另一条研究线关注总统制度。
 
-来美国之前，我在中国政法大学获得法学学士学位。
+此前，我在约翰斯·霍普金斯大学获得公共管理硕士学位，在中国政法大学获得公共管理学士和法学学士学位。
