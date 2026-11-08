@@ -3,9 +3,7 @@
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import NavigationLink from '@/components/ui/NavigationLink';
-import { useRouter } from 'next/navigation';
 import { getPrimaryNavigation } from '@/lib/navigation';
-import { bindHomeNavigation } from './homeInteraction';
 import { useLocaleStore } from '@/lib/stores/localeStore';
 import { useThemeStore } from '@/lib/stores/themeStore';
 import ParticleTitle from './ParticleTitle';
@@ -15,14 +13,10 @@ import styles from './entrance.module.css';
 export default function DigitalEntrance({ cvAvailable }: { cvAvailable: boolean }) {
   const locale = useLocaleStore(state => state.locale);
   const { theme, setTheme } = useThemeStore();
-  const router = useRouter();
+  const zh = locale.startsWith('zh');
   const portal = useRef<HTMLElement>(null);
   const signals = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (!portal.current) return;
-    return bindHomeNavigation(portal.current, () => router.push('/about/'));
-  }, [router]);
   useEffect(() => {
     if (signals.current) return animateSignals(signals.current);
   }, []);
@@ -42,7 +36,7 @@ export default function DigitalEntrance({ cvAvailable }: { cvAvailable: boolean 
         <span className={styles.signal} data-signal><svg viewBox="0 0 16 16"><path d="M8 13 2.8 7.8C-.5 4.5 4 .5 8 4c4-3.5 8.5.5 5.2 3.8Z" /></svg></span>
       </div>
       <header className={styles.header}>
-        <div className={styles.identity}><span className={styles.mark} aria-hidden="true">✳</span> YAO YAO <span className={styles.divider}>/</span> <span className={styles.muted}>PERSONAL INTERFACE</span></div>
+        <div className={styles.identity}><span className={styles.mark} aria-hidden="true">✳</span> {zh ? '佐治亚大学 · 政治学' : 'University of Georgia · Political Science'}</div>
         <nav className={styles.homeNav} aria-label="Primary navigation">
           {getPrimaryNavigation(locale).map(item => <NavigationLink cvAvailable={cvAvailable} key={item.id} href={item.href} aria-current={item.id === 'home' ? 'page' : undefined}>{item.title}</NavigationLink>)}
         </nav>
@@ -51,22 +45,19 @@ export default function DigitalEntrance({ cvAvailable }: { cvAvailable: boolean 
         </div>
       </header>
 
-      <div className={styles.coordinates} aria-hidden="true"><span>INDEX — 001</span><span>EST. / ACADEMIC SPACE</span></div>
       <div className={styles.content}>
-        <p className={styles.eyebrow}><span className={styles.statusDot} /> A SMALL POINT OF ENTRY</p>
         <h1 id="portal-title" className={styles.srOnly}>Yao Yao — Home</h1>
         <div className={styles.title}><Link href="/about/" className={styles.titleToggle} data-particle-link aria-label="About Yao Yao" aria-describedby="home-help"><ParticleTitle /></Link><span className={styles.bracketLeft} aria-hidden="true">+</span><span className={styles.bracketRight} aria-hidden="true">+</span></div>
-        <div className={styles.titleCaption} aria-hidden="true"><span>FORMED BY PARTICLES</span><span>CONNECTED BY CURIOSITY</span></div>
-        <p className={styles.description}>Ideas take shape.<br /><span>A space for research, discovery, and what comes next.</span></p>
-        <div className={styles.entrySpace} aria-hidden="true" />
-        <p id="home-help" className={styles.srOnly}>Click the background or activate the particle title link to visit About.</p>
-        <p className={styles.hint}>MOVE CLOSER. WATCH THE POSSIBILITIES UNFOLD.</p>
+        <p className={styles.role}>{zh ? '佐治亚大学政治学系博士候选人' : 'PhD Candidate in Political Science, University of Georgia'}</p>
+        <p className={styles.description}>{zh ? '研究官僚政治与三权分立。' : 'Bureaucratic politics and the separation of powers.'}</p>
+        <p id="home-help" className={styles.srOnly}>{zh ? '点击名字进入关于页面。' : 'Select the name to visit About.'}</p>
+        <p className={styles.hint}>{zh ? '把鼠标移近名字' : 'Move the cursor near the name'}</p>
       </div>
 
-      <div className={`${styles.floating} ${styles.floatOne}`} aria-hidden="true"><i /> FIELD / ACTIVE</div>
-      <div className={`${styles.floating} ${styles.floatTwo}`} aria-hidden="true"><span className={styles.cross}>+</span> RESTORING EQUILIBRIUM</div>
+      <div className={`${styles.floating} ${styles.floatOne}`} aria-hidden="true"><i /></div>
+      <div className={`${styles.floating} ${styles.floatTwo}`} aria-hidden="true"><span className={styles.cross}>+</span></div>
       <div className={styles.orbit} aria-hidden="true"><span /></div>
-      <footer className={styles.footer}><span><span className={styles.statusDot} /> SYSTEM READY</span><span className={styles.footerMiddle}>RESEARCH · THOUGHT · EXPLORATION</span><span>PRISM <span className={styles.blue}>/</span> 01</span></footer>
+      <footer className={styles.footer}><a href="mailto:Yao.Yao1@uga.edu"><span className={styles.statusDot} /> Yao.Yao1@uga.edu</a><span>© Yao Yao</span></footer>
     </section>
   );
 }
