@@ -1,16 +1,16 @@
 /* Quiet Digital academic routes. No root tokens or rules escape this wrapper. */
 .academic {
   --canvas: #f5f6f8;
-  --ink: #243148;
-  --secondary: #5c6879;
+  --ink: #1b2536;
+  --secondary: #465265;
   --blue: #3678e8;
   --link: #245fcb;
   --rule: rgba(65, 89, 123, .18);
-  --grid: rgba(65, 89, 123, .02);
+  --grid: transparent;
   --surface: #f5f6f8;
   --control-border: #7f8da2;
-  --font-editorial: Arial, Helvetica, 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif;
-  --font-metadata: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  --font-editorial: Inter, -apple-system, 'Segoe UI', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif;
+  --font-metadata: var(--font-editorial);
   /* Existing utility colors resolve locally, including translated Markdown. */
   --background: var(--canvas);
   --foreground: var(--ink);
@@ -23,7 +23,6 @@
   --neutral-700: var(--ink);
   color: var(--ink);
   background-color: var(--canvas);
-  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
   background-size: 64px 64px;
   min-height: 100svh;
   font-family: var(--font-editorial);
@@ -38,7 +37,7 @@
   --blue: #6c9ffc;
   --link: #6c9ffc;
   --rule: rgba(145, 169, 205, .20);
-  --grid: rgba(145, 169, 205, .016);
+  --grid: transparent;
   --surface: #121b29;
   --control-border: #64758d;
 }
@@ -173,8 +172,8 @@
 .academic :global([data-academic='mobile-nav'] > div) { background: var(--canvas); border-bottom: 1px solid var(--rule); box-shadow: none; backdrop-filter: none; }
 .academic :global([data-academic='nav-frame']) { max-width: 1264px; padding-inline: 40px; }
 .academic :global([data-academic='brand']) { transform: none !important; }
-.academic :global([data-academic='brand'] a) { font-family: var(--font-metadata); font-size: 14px; letter-spacing: .06em; font-weight: 400; }
-.academic :global([data-nav-href]) { font-family: var(--font-metadata); font-size: 12px; font-weight: 400; border-radius: 3px; color: var(--secondary); }
+.academic :global([data-academic='brand'] a) { font-family: var(--font-metadata); font-size: 16px; letter-spacing: 0; font-weight: 600; }
+.academic :global([data-nav-href]) { font-family: var(--font-metadata); font-size: 14px; font-weight: 400; border-radius: 3px; color: var(--secondary); }
 .academic :global([data-nav-href]:hover), .academic :global([aria-current='page']) { color: var(--link); }
 .academic :global([data-academic='nav-indicator']) { display: none; }
 .academic :global([data-nav-href][aria-current='page'])::after { content: ''; position: absolute; bottom: 4px; left: 12px; right: 12px; height: 1px; background: var(--blue); }
