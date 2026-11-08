@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
           <p className="text-xs text-neutral-500">
             {locale.startsWith('zh') ? '联系方式' : 'Contact'} · {' '}
-            <a href="mailto:YaoYao1@uga.edu" className="hover:text-accent underline underline-offset-4">YaoYao1@uga.edu</a>
+            <a href="mailto:Yao.Yao1@uga.edu" className="hover:text-accent underline underline-offset-4">Yao.Yao1@uga.edu</a>
           </p>
           <p className="text-xs text-neutral-500">© Yao Yao</p>
         </div>

@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import type { ReactNode } from 'react';
 import { motion } from 'framer-motion';
-import { SunIcon, MoonIcon, ComputerDesktopIcon } from '@heroicons/react/24/outline';
+import { SunIcon, MoonIcon, ComputerDesktopIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 import { useThemeStore, type Theme } from '@/lib/stores/themeStore';
 import { useMessages } from '@/lib/i18n/useMessages';
 import { cn } from '@/lib/utils';
@@ -36,9 +36,11 @@ function useThemeOptions(): ThemeOption[] {
   ];
 }
 
+/** Theme picker styled like the language picker: icon, current label, and a menu. */
 export function ThemeToggle() {
   const { theme, setTheme } = useThemeStore();
   const [mounted, setMounted] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const messages = useMessages();
   const themes = useThemeOptions();
 
@@ -47,53 +49,75 @@ export function ThemeToggle() {
   }, []);
 
   if (!mounted) {
-    return (
-      <div className="flex items-center justify-center w-10 h-10 rounded-lg border border-neutral-200 dark:border-[rgba(148,163,184,0.24)] bg-background dark:bg-neutral-800">
-        <div className="w-4 h-4 rounded-full bg-neutral-300 animate-pulse" />
-      </div>
-    );
+    return <div className="h-10 w-24" aria-hidden="true" />;
   }
 
   const currentTheme = themes.find((t) => t.value === theme) || themes[0];
 
   return (
     <div className="relative">
-      <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+      <button
         data-academic="theme-control"
+        aria-expanded={isOpen}
+        aria-label={`${messages.theme.currentTheme}: ${currentTheme.label}`}
         type="button"
         onMouseDown={(e) => e.preventDefault()}
-        onClick={() => {
-          const order: Theme[] = ['system', 'light', 'dark'];
-          const index = order.indexOf(theme);
-          const next = order[(index + 1) % order.length];
-          setTheme(next);
-        }}
+        onClick={() => setIsOpen(!isOpen)}
         className={cn(
-          'flex items-center justify-center w-10 h-10 rounded-lg',
+          'flex items-center justify-center gap-1 px-2 h-10 rounded-lg',
           'border border-neutral-200 bg-background hover:bg-neutral-50',
           'dark:border-[rgba(148,163,184,0.24)] dark:bg-neutral-800 dark:hover:bg-neutral-700',
-          'transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50',
+          'transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50',
           'text-neutral-600 hover:text-primary dark:text-neutral-400 dark:hover:text-white'
         )}
-        title={`${messages.theme.currentTheme}: ${currentTheme.label}. ${messages.theme.cycleTheme}.`}
+        title={`${messages.theme.currentTheme}: ${currentTheme.label}`}
       >
-        <motion.div
-          key={theme}
-          initial={{ rotate: -180, opacity: 0 }}
-          animate={{ rotate: 0, opacity: 1 }}
-          transition={{ duration: 0.3 }}
-        >
-          {theme === 'system' ? (
-            <ComputerDesktopIcon className="h-4 w-4" />
-          ) : theme === 'dark' ? (
-            <MoonIcon className="h-4 w-4" />
-          ) : (
-            <SunIcon className="h-4 w-4" />
+        {currentTheme.icon}
+        <span className="text-xs font-medium">{currentTheme.label}</span>
+        <ChevronDownIcon className="h-3.5 w-3.5" />
+      </button>
+
+      {isOpen && (
+        <div
+          data-academic="language-menu"
+          className={cn(
+            'absolute right-0 mt-2 w-36 rounded-lg shadow-lg border',
+            'bg-background border-neutral-200 dark:border-[rgba(148,163,184,0.24)]',
+            'dark:bg-neutral-800 z-50'
           )}
-        </motion.div>
-      </motion.button>
+        >
+          <div className="py-1">
+            {themes.map((themeOption) => (
+              <button
+                key={themeOption.value}
+                type="button"
+                onClick={() => {
+                  setTheme(themeOption.value);
+                  setIsOpen(false);
+                }}
+                className={cn(
+                  'flex items-center gap-2 w-full px-3 py-2 text-sm',
+                  'hover:bg-neutral-50 dark:hover:bg-neutral-700',
+                  'transition-colors duration-200',
+                  theme === themeOption.value
+                    ? 'text-accent bg-accent/10'
+                    : 'text-neutral-700 dark:text-neutral-300'
+                )}
+              >
+                {themeOption.icon}
+                {themeOption.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {isOpen && (
+        <div
+          className="fixed inset-0 z-40"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
     </div>
   );
 }
