@@ -78,13 +78,13 @@
 }
 .academic :global([data-academic='section'] > h2),
 .academic :global([data-academic='section'] > div:first-child > h2) {
-  font-size: 25px;
-  line-height: 1.3;
-  margin-bottom: 24px;
+  font-size: 36px;
+  line-height: 1.2;
+  margin-bottom: 40px;
 }
 .academic :global([data-academic='section'] > div:first-child:has(h2)) { align-items: baseline; gap: 16px; margin-bottom: 0; }
 .academic :global([data-academic='section'] > div:first-child > a) { font-size: 12px; white-space: nowrap; }
-.academic :global([data-academic='biography']) { line-height: 1.85; color: var(--ink); }
+.academic :global([data-academic='biography']) { font-size: 16px; line-height: 1.75; color: var(--ink); max-width: 720px; }
 .academic :global([data-academic='biography'] p) { margin-bottom: 20px; }
 .academic :global([data-academic='biography'] a),
 .academic :global([data-academic='section'] > div:first-child > a) {
@@ -347,4 +347,13 @@
   .academic :global([data-academic='paper-text'] h3) { font-size: 18px; }
   .academic :global([data-academic='course-heading']) { gap: 16px; flex-wrap: wrap; }
   .academic :global([data-academic='cv-body'] h2) { font-size: 22px; }
+}
+
+/* One shared grid for About, Research and Teaching: the same 1184px container,
+   and Research/Teaching text starts where the About text starts (right of the 288px profile column). */
+.academic :global([data-research-page]),
+.academic :global([data-teaching-page]) { margin-inline: 0; max-width: 720px; }
+@media (min-width: 1024px) {
+  .academic :global([data-research-page]),
+  .academic :global([data-teaching-page]) { margin-left: 376px; }
 }
