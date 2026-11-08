@@ -373,6 +373,7 @@
 .academic :global([data-academic='identity'] p:first-of-type) { color: var(--secondary); font-size: 15px; font-weight: 400; margin: 0; }
 .academic :global([data-academic='identity'] p) { color: var(--secondary); font-size: 15px; line-height: 1.5; margin: 0; }
 .academic :global([data-about-cv]) { margin-top: 16px; font-size: 15px; font-weight: 600; text-decoration: none; color: var(--link); }
+.academic :global([data-about-cv]:hover) { text-decoration: underline; text-underline-offset: 4px; }
 .academic :global([data-academic='interests']) { padding-top: 20px; }
 .academic :global([data-academic='interests'] h3) { font-family: var(--font-metadata); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
 .academic :global([data-academic='interests'] > div) { color: var(--body); font-size: 15px; line-height: 1.7; }

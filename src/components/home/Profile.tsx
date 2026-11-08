@@ -7,8 +7,7 @@ import {
     EnvelopeIcon,
     AcademicCapIcon,
     HeartIcon,
-    MapPinIcon
-} from '@heroicons/react/24/outline';
+    MapPinIcon, ArrowDownTrayIcon } from '@heroicons/react/24/outline';
 import { MapPinIcon as MapPinSolidIcon, EnvelopeIcon as EnvelopeSolidIcon } from '@heroicons/react/24/solid';
 import { HeartIcon as HeartSolidIcon } from '@heroicons/react/24/solid';
 import { Github, Linkedin, Pin } from 'lucide-react';
@@ -144,6 +143,7 @@ export default function Profile({ cvAvailable, author, social, features, researc
                     title={cvAvailable ? undefined : (isChinese ? '简历 PDF 待上传' : 'CV PDF pending upload')}
                     className="inline-block mt-4 text-sm text-accent underline underline-offset-4"
                 >
+                    <ArrowDownTrayIcon className="inline-block h-4 w-4 mr-1.5 -mt-0.5" aria-hidden="true" />
                     {isChinese ? '下载简历' : 'Download CV'}
                 </a>
             </div>
