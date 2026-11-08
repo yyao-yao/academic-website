@@ -1,11 +1,11 @@
 .page { max-width: 760px; margin-inline: auto; color: var(--ink); font-family: var(--font-editorial); }
 .title { font-size: 36px; line-height: 1.2; margin: 0 0 56px; }
-.section + .section { margin-top: 64px; }
-.page .section h2 { font-family: var(--font-metadata); font-size: 13px; font-weight: 400; letter-spacing: .08em; text-transform: uppercase; line-height: 1.4; color: var(--link); margin: 0 0 8px; padding-bottom: 10px; border-bottom: 1px solid var(--rule); }
-.entry { padding: 20px 0; }
-.entry + .entry { border-top: 1px solid var(--rule); }
-.page .entry h3 { font-size: 17px; font-weight: 600; line-height: 1.5; margin: 0; color: var(--ink); letter-spacing: -.01em; }
-.entry p { font-size: 15px; line-height: 1.7; margin: 4px 0 0; color: var(--secondary); }
+.section + .section { margin-top: 72px; }
+.page .section h2 { font-family: var(--font-metadata); font-size: 13px; font-weight: 400; letter-spacing: .08em; text-transform: uppercase; line-height: 1.4; color: var(--link); margin: 0 0 28px; padding-bottom: 10px; border-bottom: 1px solid var(--rule); }
+.entry { padding: 0; }
+.entry + .entry { margin-top: 36px; }
+.page .entry h3 { font-size: 17px; font-weight: 600; line-height: 1.5; margin: 0 0 8px; color: var(--ink); letter-spacing: -.01em; }
+.entry p { font-size: 15px; line-height: 1.6; margin: 2px 0 0; color: var(--secondary); }
 .label { color: var(--ink); }
 .recognition { font-weight: 600; }
 .page .entry .recognition { color: var(--link); }
