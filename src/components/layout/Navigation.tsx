@@ -125,8 +125,8 @@ export default function Navigation({
                   </Link>
                 </motion.div>
 
-                <div className="hidden lg:block">
-                  <div className="ml-10 flex items-center space-x-3">
+                <div className="hidden lg:flex flex-1 items-center ml-10">
+                  <div className="flex-1 flex justify-center">
                     <div
                       ref={navContainerRef}
                       className="relative flex items-baseline space-x-1"
@@ -182,6 +182,8 @@ export default function Navigation({
                         );
                       })}
                     </div>
+                  </div>
+                  <div data-academic="nav-controls" className="flex items-center gap-2">
                     <LanguageToggle i18n={i18n} />
                     <ThemeToggle />
                   </div>
