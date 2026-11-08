@@ -125,7 +125,7 @@ export default function Navigation({
                   </Link>
                 </motion.div>
 
-                <div className="hidden lg:block">
+                <div data-academic="nav-desktop" className="hidden lg:block">
                   <div data-academic="nav-right" className="ml-10 flex items-center space-x-3">
                     <div
                       ref={navContainerRef}

@@ -393,10 +393,10 @@
   .academic :global([data-academic='columns']) { grid-template-columns: minmax(0, 1fr); gap: 40px; }
 }
 
-/* Menu stays where it is; only the language and theme controls sit at the window's right edge. */
-.academic :global([data-academic='nav-surface']) { position: relative; }
+/* Top bar: name at the left edge, language and theme at the right edge,
+   menu in between with equal space on both sides. */
 @media (min-width: 1024px) {
-  .academic :global([data-academic='nav-controls']) { position: absolute; right: 40px; top: 50%; transform: translateY(-50%); }
-  /* Keep the menu where it was: reserve the space the controls used to take. */
-  .academic :global([data-academic='nav-right']) { padding-right: 270px; }
+  .academic :global([data-academic='nav-frame']) { max-width: none; padding-inline: 40px; }
+  .academic :global([data-academic='nav-desktop']) { display: contents; }
+  .academic :global([data-academic='nav-right']) { margin: 0; }
 }
