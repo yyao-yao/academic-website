@@ -34,18 +34,6 @@ target = "teaching"
 href = "/teaching"
 
 [[navigation]]
-title = "奖项"
-type = "page"
-target = "awards"
-href = "/awards"
-
-[[navigation]]
-title = "服务"
-type = "page"
-target = "services"
-href = "/services"
-
-[[navigation]]
 title = "简历"
 type = "link"
 target = "cv"
