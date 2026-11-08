@@ -5,6 +5,7 @@
 .entry { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 24px; padding: 20px 0; }
 .entry + .entry { border-top: 1px solid var(--rule); }
 .date { font-family: var(--font-metadata); font-size: 12px; line-height: 1.6; color: var(--secondary); padding-top: 3px; }
+.datePart { display: block; white-space: nowrap; }
 .body { min-width: 0; }
 .page .entry h3 { font-size: 17px; font-weight: 600; line-height: 1.5; margin: 0; color: var(--ink); letter-spacing: -.01em; }
 .entry p { font-size: 15px; line-height: 1.7; margin: 4px 0 0; color: var(--secondary); }

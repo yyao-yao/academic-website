@@ -9,7 +9,7 @@ export default function TeachingPage({ config }: { config: CardPageConfig }) {
             <h2 id={section.id}>{section.title}</h2>
             <div>
                 {section.items.map(item => <article key={`${item.institution}-${item.title}`} className={styles.entry} data-teaching-appointment>
-                    <span className={styles.date}>{item.semester}</span>
+                    <span className={styles.date}>{item.semester.split(' – ').map((part, i, parts) => <span key={i} className={styles.datePart}>{part}{i < parts.length - 1 ? ' –' : ''}</span>)}</span>
                     <div className={styles.body}>
                         <h3>{item.title}</h3>
                         {item.title !== item.institution && <p>Undergraduate, {item.institution}</p>}

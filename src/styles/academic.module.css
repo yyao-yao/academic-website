@@ -82,15 +82,6 @@
   line-height: 1.3;
   margin-bottom: 24px;
 }
-.academic :global([data-academic='section'] > h2)::before,
-.academic :global([data-academic='section'] > div:first-child > h2)::before {
-  content: '';
-  display: inline-block;
-  width: 5px;
-  height: 5px;
-  margin: 0 12px 5px 0;
-  background: var(--blue);
-}
 .academic :global([data-academic='section'] > div:first-child:has(h2)) { align-items: baseline; gap: 16px; margin-bottom: 0; }
 .academic :global([data-academic='section'] > div:first-child > a) { font-size: 12px; white-space: nowrap; }
 .academic :global([data-academic='biography']) { line-height: 1.85; color: var(--ink); }
@@ -128,6 +119,8 @@
 .academic :global([data-academic='contacts'] > div > button) { min-width: 40px; min-height: 40px; border-radius: 3px; }
 .academic :global([data-academic='contacts'] > a:hover),
 .academic :global([data-academic='contacts'] > div > button:hover) { color: var(--link); background: color-mix(in srgb, var(--blue) 6%, transparent); }
+/* Contact icons hidden for now; the links stay in config.toml. */
+.academic :global([data-academic='contacts']) { display: none !important; }
 .academic :global([data-academic='interests']) {
   padding: 24px 0 0;
   border-top: 1px solid var(--rule);
