@@ -191,7 +191,7 @@ export default function ParticleTitle() {
       } else frame = requestAnimationFrame(animate);
     };
     const move = (event: PointerEvent) => {
-      if (event.pointerType === 'touch' || reducedMotion.matches || document.hidden) return;
+      if (reducedMotion.matches || document.hidden) return;
       const rect = element.getBoundingClientRect();
       const coalesced = event.getCoalescedEvents?.();
       const samples = coalesced?.length ? coalesced : [event];
