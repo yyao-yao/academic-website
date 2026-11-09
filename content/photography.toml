@@ -2,6 +2,76 @@ title = "Photography"
 description = "Fragments of places, people, and passing moments."
 
 [[photos]]
+id = "fuji-window-view"
+src = "2F8A0870.JPG"
+alt = "Mount Fuji seen through a window frame above rooftops."
+title = "Fuji through the window"
+location = "Mount Fuji, Japan"
+
+[[photos]]
+id = "fuji-autumn-leaves"
+src = "2F8A0898.JPG"
+alt = "Mount Fuji framed by golden autumn leaves."
+title = "Autumn leaves and Fuji"
+location = "Mount Fuji, Japan"
+
+[[photos]]
+id = "fuji-pink-sky"
+src = "IMG_3353.JPG"
+alt = "Snow-capped Mount Fuji under a soft pink sky."
+title = "Fuji at dusk"
+location = "Mount Fuji, Japan"
+
+[[photos]]
+id = "fuji-town-street"
+src = "IMG_3551.JPG"
+alt = "A quiet town street lined with utility poles, the sun low behind the wires."
+title = "A quiet street"
+location = "Mount Fuji, Japan"
+
+[[photos]]
+id = "kyoto-kiyomizu-pagoda"
+src = "IMG_3553.JPG"
+alt = "The red pagoda of Kiyomizu-dera above the city on a hazy day."
+title = "Kiyomizu-dera"
+location = "Kyoto, Japan"
+
+[[photos]]
+id = "aranya-gulls"
+src = "IMG_3876.JPG"
+alt = "Seagulls in flight over the sea at dusk."
+title = "Gulls at dusk"
+location = "Aranya, Hebei, China"
+
+[[photos]]
+id = "aranya-shore"
+src = "IMG_3877.JPG"
+alt = "A calm shoreline under a pink evening sky."
+title = "Evening shore"
+location = "Aranya, Hebei, China"
+
+[[photos]]
+id = "aranya-moon"
+src = "IMG_3878.JPG"
+alt = "A figure in white by the sea under a pale moon."
+title = "Under the moon"
+location = "Aranya, Hebei, China"
+
+[[photos]]
+id = "forbidden-city-winter"
+src = "IMG_7936.JPG"
+alt = "The Forbidden City in the distance beyond golden grasses on a clear day."
+title = "The Forbidden City"
+location = "Forbidden City, Beijing, China"
+
+[[photos]]
+id = "forbidden-city-sunset"
+src = "IMG_7969.JPG"
+alt = "A corner tower of the Forbidden City at sunset, reflected in the moat."
+title = "Corner tower at sunset"
+location = "Forbidden City, Beijing, China"
+
+[[photos]]
 id = "istanbul-street-to-water"
 src = "IMG_1763.JPG"
 alt = "A narrow street in Istanbul at dusk, opening onto the water and distant hills."
