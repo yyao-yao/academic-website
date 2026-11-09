@@ -54,19 +54,30 @@ export default function PhotoGallery({ photos }: { photos: Photograph[] }) {
     setActiveIndex(index);
   };
   if (photos.length === 0) return null;
-  const [opening, ...remaining] = photos;
-  const pairs: Photograph[][] = [];
-  for (let index = 0; index < remaining.length; index += 2) pairs.push(remaining.slice(index, index + 2));
+  // Staggered masonry: each photo goes to the currently shortest column, so the
+  // columns end at about the same height. Column count follows the screen width.
+  const columnsFor = (count: number) => {
+    const columns: Photograph[][] = Array.from({ length: count }, () => []);
+    const heights = new Array(count).fill(0);
+    photos.forEach(photo => {
+      const target = heights.indexOf(Math.min(...heights));
+      columns[target].push(photo);
+      heights[target] += photo.height / photo.width + 0.12;
+    });
+    return columns;
+  };
+  const layouts = [3, 2, 1].map(count => ({ count, columns: columnsFor(count) }));
   return (
     <>
-      <div className={styles.gallery}>
-        <div className={styles.opening}><Photo photo={opening} opening onOpen={open} /></div>
-        {pairs.map((pair, index) => (
-          <div key={pair[0].id} className={pair.length === 1 ? styles.solo : styles.pair} data-rhythm={index % 3}>
-            {pair.map(photo => <Photo key={photo.id} photo={photo} onOpen={open} />)}
-          </div>
-        ))}
-      </div>
+      {layouts.map(({ count, columns }) => (
+        <div key={count} className={styles.masonry} data-columns={count}>
+          {columns.map((column, index) => (
+            <div key={index} className={styles.column} data-column={index}>
+              {column.map(photo => <Photo key={photo.id} photo={photo} opening={photo.id === photos[0].id && count === 3} onOpen={open} />)}
+            </div>
+          ))}
+        </div>
+      ))}
       {activeIndex !== null && photos[activeIndex] && (
         <PhotoLightbox photos={photos} index={activeIndex} onIndexChange={setActiveIndex} onClose={close} opener={opener.current} />
       )}
