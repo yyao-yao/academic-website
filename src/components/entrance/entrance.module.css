@@ -193,3 +193,5 @@
 @keyframes nightTwinkle { 0%, 100% { opacity: .6; } 50% { opacity: .28; } }
 @media (prefers-reduced-motion: reduce) { :global(.dark) .nightLine { animation: none; } }
 @media (max-width: 640px) { .nightLine { font-size: 12px; max-width: 280px; } }
+
+.nightSource { display: block; margin-top: 8px; font-style: normal; font-size: 11px; letter-spacing: .06em; }

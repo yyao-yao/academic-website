@@ -39,8 +39,8 @@ export default function DigitalEntrance() {
         <p className={styles.description}>{zh ? '行政政治 · 三权分立 · 民主问责' : 'Executive politics · Separation of powers · Democratic accountability'}</p>
         <p id="home-help" className={styles.srOnly}>{zh ? '点击名字进入关于页面。' : 'Select the name to visit About.'}</p>
         <p className={styles.nightLine} aria-hidden="true">{zh
-          ? <>我对我的内心一直看得不是很清楚，<br />但我总是本能地追随一颗看不见的星星。</>
-          : <>I have never seen my own heart very clearly,<br />but I always follow, by instinct, a star I cannot see.</>}</p>
+          ? <>我对我的内心一直看得不是很清楚，<br />但我总是本能地追随一颗看不见的星星。<span className={styles.nightSource}>—— 加缪，《手记》，1950 年 1 月 10 日</span></>
+          : <>I have never seen very clearly into myself,<br />but I have always followed, by instinct, an invisible star.<span className={styles.nightSource}>— Albert Camus, Notebooks, January 10, 1950</span></>}</p>
         <p className={styles.hint}><span className={styles.hintMouse}>{zh ? '把鼠标移近名字' : 'Move the cursor near the name'}</span><span className={styles.hintTouch}>{zh ? '用手指划过名字' : 'Drag a finger across the name'}</span></p>
       </div>
 
