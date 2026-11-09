@@ -125,8 +125,11 @@ export default function Profile({ cvAvailable, author, social, features, researc
 
             {/* Name and Title */}
             <div data-academic="identity" className="text-center mb-6">
-                <h1 className="text-3xl font-serif font-bold text-primary mb-2">
-                    {author.name}
+                <h1 className="text-3xl font-serif font-bold text-primary mb-2" data-name-swap={author.alt_name ? '' : undefined}>
+                    {author.alt_name ? <>
+                        <span data-name-primary>{author.name}</span>
+                        <span data-name-alt aria-hidden="true">{author.alt_name}</span>
+                    </> : author.name}
                 </h1>
                 <p className="text-lg text-accent font-medium mb-1">
                     {author.title}

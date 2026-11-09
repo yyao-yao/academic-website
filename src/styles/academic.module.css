@@ -405,3 +405,10 @@
 @media (max-width: 1023px) {
   .academic :global([data-academic='nav-spacer']) { display: none; }
 }
+
+/* Hovering the sidebar name shows the name in the other language. */
+.academic :global([data-name-swap]) { display: inline-grid; cursor: default; }
+.academic :global([data-name-swap] > span) { grid-area: 1 / 1; transition: opacity 260ms ease; }
+.academic :global([data-name-alt]) { opacity: 0; }
+.academic :global([data-name-swap]:hover [data-name-primary]) { opacity: 0; }
+.academic :global([data-name-swap]:hover [data-name-alt]) { opacity: 1; }
