@@ -406,9 +406,23 @@
   .academic :global([data-academic='nav-spacer']) { display: none; }
 }
 
-/* Hovering the sidebar name shows the name in the other language. */
-.academic :global([data-name-swap]) { display: inline-grid; cursor: default; }
-.academic :global([data-name-swap] > span) { grid-area: 1 / 1; transition: opacity 260ms ease; }
-.academic :global([data-name-alt]) { opacity: 0; }
-.academic :global([data-name-swap]:hover [data-name-primary]) { opacity: 0; }
-.academic :global([data-name-swap]:hover [data-name-alt]) { opacity: 1; }
+/* Hovering the sidebar name shows a small bubble above it with the name in the other language. */
+.academic :global([data-name-swap]) { position: relative; display: inline-block; cursor: default; }
+.academic :global([data-name-alt]) {
+  position: absolute; left: 50%; bottom: calc(100% + 10px);
+  transform: translate(-50%, 4px);
+  padding: 6px 12px; border-radius: 6px;
+  background: var(--ink); color: var(--canvas);
+  font-size: 16px; font-weight: 500; letter-spacing: 0; line-height: 1.3; white-space: nowrap;
+  box-shadow: 0 4px 14px rgb(0 0 0 / .12);
+  opacity: 0; pointer-events: none;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+.academic :global([data-name-alt])::after {
+  content: ''; position: absolute; left: 50%; top: 100%; transform: translateX(-50%);
+  border: 6px solid transparent; border-top-color: var(--ink);
+}
+.academic :global([data-name-swap]:hover [data-name-alt]) { opacity: 1; transform: translate(-50%, 0); }
+@media (max-width: 1023px) {
+  .academic :global([data-name-alt]) { left: 50%; }
+}
