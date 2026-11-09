@@ -2,67 +2,11 @@ title = "Photography"
 description = "Fragments of places, people, and passing moments."
 
 [[photos]]
-id = "fuji-window-view"
-src = "2F8A0870.JPG"
-alt = "Mount Fuji seen through a window frame above rooftops."
-title = "Fuji through the window"
-location = "Mount Fuji, Japan"
-
-[[photos]]
-id = "fuji-autumn-leaves"
-src = "2F8A0898.JPG"
-alt = "Mount Fuji framed by golden autumn leaves."
-title = "Autumn leaves and Fuji"
-location = "Mount Fuji, Japan"
-
-[[photos]]
 id = "fuji-pink-sky"
 src = "IMG_3353.JPG"
 alt = "Snow-capped Mount Fuji under a soft pink sky."
 title = "Fuji at dusk"
 location = "Mount Fuji, Japan"
-
-[[photos]]
-id = "fuji-town-street"
-src = "IMG_3551.JPG"
-alt = "The street by the Hikawa Clock Shop in Fujiyoshida at sunrise, the sun rising behind the utility wires."
-title = "Sunrise street"
-location = "Hikawa Clock Shop, Fujiyoshida, Japan"
-
-[[photos]]
-id = "kyoto-kiyomizu-pagoda"
-src = "IMG_3553.JPG"
-alt = "The red pagoda of Kiyomizu-dera above the city on a hazy day."
-title = "Kiyomizu-dera"
-location = "Kyoto, Japan"
-
-[[photos]]
-id = "aranya-gulls"
-src = "IMG_3876.JPG"
-alt = "Seagulls in flight over the sea at dusk."
-title = "Gulls at dusk"
-location = "Aranya, Hebei, China"
-
-[[photos]]
-id = "aranya-shore"
-src = "IMG_3877.JPG"
-alt = "A calm shoreline under a pink sky at sunrise."
-title = "Shore at sunrise"
-location = "Aranya, Hebei, China"
-
-[[photos]]
-id = "aranya-moon"
-src = "IMG_3878.JPG"
-alt = "A girl in white faces the evening sea, a faint moon rising in a lavender sky."
-title = "Under the moon"
-location = "Aranya, Hebei, China"
-
-[[photos]]
-id = "forbidden-city-winter"
-src = "IMG_7936.JPG"
-alt = "The Forbidden City after a snowfall, its roofs dusted white beyond golden winter grasses on a clear day."
-title = "The Forbidden City after snow"
-location = "Forbidden City, Beijing, China"
 
 [[photos]]
 id = "forbidden-city-sunset"
@@ -72,18 +16,32 @@ title = "Sunset over the moat"
 location = "Forbidden City, Beijing, China"
 
 [[photos]]
-id = "istanbul-street-to-water"
-src = "IMG_1763.JPG"
-alt = "A narrow street in Istanbul at dusk, opening onto the water and distant hills."
-title = "A street toward the water"
-location = "Istanbul, Turkey"
-
-[[photos]]
 id = "istanbul-new-mosque"
 src = "IMG_1764.JPG"
 alt = "The New Mosque lit up across the Golden Horn at dusk, Istanbul."
 title = "New Mosque at blue hour"
 location = "Istanbul, Turkey"
+
+[[photos]]
+id = "kyoto-kiyomizu-pagoda"
+src = "IMG_3553.JPG"
+alt = "The red pagoda of Kiyomizu-dera above the city on a hazy day."
+title = "Kiyomizu-dera"
+location = "Kyoto, Japan"
+
+[[photos]]
+id = "aranya-moon"
+src = "IMG_3878.JPG"
+alt = "A girl in white faces the evening sea, a faint moon rising in a lavender sky."
+title = "Under the moon"
+location = "Aranya, Hebei, China"
+
+[[photos]]
+id = "fuji-autumn-leaves"
+src = "2F8A0898.JPG"
+alt = "Mount Fuji framed by golden autumn leaves."
+title = "Autumn leaves and Fuji"
+location = "Mount Fuji, Japan"
 
 [[photos]]
 id = "istanbul-bosphorus-night"
@@ -93,8 +51,50 @@ title = "Watching the Bosphorus"
 location = "Istanbul, Turkey"
 
 [[photos]]
+id = "forbidden-city-winter"
+src = "IMG_7936.JPG"
+alt = "The Forbidden City after a snowfall, its roofs dusted white beyond golden winter grasses on a clear day."
+title = "The Forbidden City after snow"
+location = "Forbidden City, Beijing, China"
+
+[[photos]]
+id = "aranya-gulls"
+src = "IMG_3876.JPG"
+alt = "Seagulls in flight over the sea at dusk."
+title = "Gulls at dusk"
+location = "Aranya, Hebei, China"
+
+[[photos]]
+id = "fuji-town-street"
+src = "IMG_3551.JPG"
+alt = "The street by the Hikawa Clock Shop in Fujiyoshida at sunrise, the sun rising behind the utility wires."
+title = "Sunrise street"
+location = "Hikawa Clock Shop, Fujiyoshida, Japan"
+
+[[photos]]
+id = "istanbul-street-to-water"
+src = "IMG_1763.JPG"
+alt = "A narrow street in Istanbul at dusk, opening onto the water and distant hills."
+title = "A street toward the water"
+location = "Istanbul, Turkey"
+
+[[photos]]
+id = "aranya-shore"
+src = "IMG_3877.JPG"
+alt = "A calm shoreline under a pink sky at sunrise."
+title = "Shore at sunrise"
+location = "Aranya, Hebei, China"
+
+[[photos]]
 id = "istanbul-eminonu-evening"
 src = "IMG_1776.JPG"
 alt = "A yellow taxi on a road at dusk, with the domes and minarets of the New Mosque behind."
 title = "Evening traffic, Eminönü"
 location = "Istanbul, Turkey"
+
+[[photos]]
+id = "fuji-window-view"
+src = "2F8A0870.JPG"
+alt = "Mount Fuji seen through a window frame above rooftops."
+title = "Fuji through the window"
+location = "Mount Fuji, Japan"
