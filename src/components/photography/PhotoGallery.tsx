@@ -54,31 +54,45 @@ export default function PhotoGallery({ photos }: { photos: Photograph[] }) {
     setActiveIndex(index);
   };
   if (photos.length === 0) return null;
-  // Staggered masonry: each photo goes to the currently shortest column, so the
-  // columns end at about the same height. Column count follows the screen width.
-  const columnsFor = (count: number) => {
-    const columns: Photograph[][] = Array.from({ length: count }, () => []);
-    const offsets: Record<number, number[]> = { 3: [0, 1.6, 0.8], 2: [0, 1.2], 1: [0] };
-    const heights: number[] = [...offsets[count]];
-    photos.forEach(photo => {
-      const target = heights.indexOf(Math.min(...heights));
-      columns[target].push(photo);
-      heights[target] += photo.height / photo.width + 0.7;
-    });
-    return columns;
-  };
-  const layouts = [3, 2, 1].map(count => ({ count, columns: columnsFor(count) }));
+  // Editorial rows that mix portrait and landscape photos, keeping the given order:
+  // three portraits per row, or a landscape paired with one portrait (sides alternate).
+  type Row = { kind: 'ppp' | 'lp' | 'pl' | 'l' | 'pp' | 'p'; photos: Photograph[] };
+  const isLandscape = (photo: Photograph) => photo.width > photo.height;
+  const rows: Row[] = [];
+  let landscapeLeft = true;
+  for (let i = 0; i < photos.length;) {
+    const current = photos[i];
+    const next = photos[i + 1];
+    if (isLandscape(current)) {
+      if (next && !isLandscape(next)) {
+        rows.push({ kind: landscapeLeft ? 'lp' : 'pl', photos: landscapeLeft ? [current, next] : [next, current] });
+        landscapeLeft = !landscapeLeft; i += 2;
+      } else { rows.push({ kind: 'l', photos: [current] }); i += 1; }
+      continue;
+    }
+    const portraits: Photograph[] = [];
+    while (portraits.length < 3 && photos[i + portraits.length] && !isLandscape(photos[i + portraits.length])) portraits.push(photos[i + portraits.length]);
+    const following = photos[i + portraits.length];
+    if (portraits.length < 3 && following && isLandscape(following)) {
+      // Leftover portraits before a landscape: the last one pairs with the landscape.
+      if (portraits.length === 2) { rows.push({ kind: 'p', photos: [portraits[0]] }); }
+      const partner = portraits[portraits.length - 1];
+      rows.push({ kind: landscapeLeft ? 'lp' : 'pl', photos: landscapeLeft ? [following, partner] : [partner, following] });
+      landscapeLeft = !landscapeLeft; i += portraits.length + 1;
+      continue;
+    }
+    rows.push({ kind: portraits.length === 3 ? 'ppp' : portraits.length === 2 ? 'pp' : 'p', photos: portraits });
+    i += portraits.length;
+  }
   return (
     <>
-      {layouts.map(({ count, columns }) => (
-        <div key={count} className={styles.masonry} data-columns={count}>
-          {columns.map((column, index) => (
-            <div key={index} className={styles.column} data-column={index}>
-              {column.map(photo => <Photo key={photo.id} photo={photo} opening={photo.id === photos[0].id && count === 3} onOpen={open} />)}
-            </div>
-          ))}
-        </div>
-      ))}
+      <div className={styles.rows}>
+        {rows.map(row => (
+          <div key={row.photos[0].id} className={styles.row} data-kind={row.kind}>
+            {row.photos.map(photo => <Photo key={photo.id} photo={photo} opening={photo.id === photos[0].id} onOpen={open} />)}
+          </div>
+        ))}
+      </div>
       {activeIndex !== null && photos[activeIndex] && (
         <PhotoLightbox photos={photos} index={activeIndex} onIndexChange={setActiveIndex} onClose={close} opener={opener.current} />
       )}

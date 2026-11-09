@@ -91,21 +91,30 @@
   .viewerPicture { transition: none; }
 }
 
-/* Three-column staggered gallery with generous white space. */
-.masonry { display: none; align-items: start; }
-.column { display: flex; flex-direction: column; gap: 72px; min-width: 0; }
-.masonry .photograph { width: 100%; margin: 0; }
-.masonry[data-columns='3'] { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 56px; }
-.masonry[data-columns='3'] .column[data-column='1'] { padding-top: 160px; }
-.masonry[data-columns='3'] .column[data-column='2'] { padding-top: 80px; }
+/* Editorial rows: portraits and landscapes mixed, staggered heights, generous white space. */
+.rows { display: flex; flex-direction: column; gap: 88px; }
+.row { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); column-gap: 48px; align-items: start; }
+.row .photograph { margin: 0; }
+.row .photograph[data-orientation='portrait'] { grid-column: span 2; }
+.row .photograph[data-orientation='landscape'] { grid-column: span 4; }
+/* Three portraits: middle drops most, right drops a little. */
+.row[data-kind='ppp'] .photograph:nth-child(2) { margin-top: 120px; }
+.row[data-kind='ppp'] .photograph:nth-child(3) { margin-top: 56px; }
+/* Landscape + portrait: the portrait sits lower than the landscape. */
+.row[data-kind='lp'] .photograph:nth-child(2) { margin-top: 96px; }
+.row[data-kind='pl'] .photograph:nth-child(1) { margin-top: 96px; }
+.row[data-kind='pp'] .photograph:nth-child(1) { grid-column: 2 / span 2; }
+.row[data-kind='pp'] .photograph:nth-child(2) { margin-top: 96px; }
+.row[data-kind='p'] .photograph { grid-column: 3 / span 2; }
+.row[data-kind='l'] .photograph { grid-column: 2 / span 4; }
 @media (max-width: 1023px) {
-  .masonry[data-columns='3'] { display: none; }
-  .masonry[data-columns='2'] { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 40px; }
-  .masonry[data-columns='2'] .column[data-column='1'] { padding-top: 120px; }
-  .column { gap: 56px; }
+  .rows { gap: 64px; }
+  .row { column-gap: 28px; }
+  .row[data-kind='ppp'] .photograph:nth-child(2) { margin-top: 80px; }
+  .row[data-kind='ppp'] .photograph:nth-child(3) { margin-top: 40px; }
 }
 @media (max-width: 640px) {
-  .masonry[data-columns='2'] { display: none; }
-  .masonry[data-columns='1'] { display: grid; grid-template-columns: minmax(0, 1fr); }
-  .column { gap: 48px; }
+  .rows { gap: 48px; }
+  .row { display: flex; flex-direction: column; gap: 48px; }
+  .row .photograph { margin-top: 0 !important; }
 }
