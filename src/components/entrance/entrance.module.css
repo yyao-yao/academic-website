@@ -181,17 +181,16 @@
   .hintTouch { display: inline; }
 }
 
-/* A line that only appears at night, like stars */
+/* A line in the footer that only appears at night, like stars */
 .nightLine {
-  margin: 26px auto 0; max-width: 520px;
+  flex: 1; text-align: center; min-width: 0;
   font-family: var(--font-editorial, Georgia, serif); font-style: italic;
-  font-size: 14px; line-height: 1.8; letter-spacing: .02em;
+  font-size: 13px; letter-spacing: .01em;
   color: var(--portal-muted); opacity: 0; pointer-events: none;
   transition: opacity 1.6s ease;
 }
-:global(.dark) .nightLine { opacity: .6; animation: nightTwinkle 6s ease-in-out 1.6s infinite; }
-@keyframes nightTwinkle { 0%, 100% { opacity: .6; } 50% { opacity: .28; } }
+:global(.dark) .nightLine { opacity: .7; animation: nightTwinkle 6s ease-in-out 1.6s infinite; }
+@keyframes nightTwinkle { 0%, 100% { opacity: .7; } 50% { opacity: .3; } }
 @media (prefers-reduced-motion: reduce) { :global(.dark) .nightLine { animation: none; } }
-@media (max-width: 640px) { .nightLine { font-size: 12px; max-width: 280px; } }
-
-.nightSource { display: block; margin-top: 8px; font-style: normal; font-size: 11px; letter-spacing: .06em; }
+@media (max-width: 900px) { .nightLine { display: none; } }
+.nightSource { font-style: normal; margin-left: 12px; font-size: 11px; letter-spacing: .04em; }
