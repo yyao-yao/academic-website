@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { hasOfficialCv } from '@/lib/cv';
 import { getConfig } from '@/lib/config';
 import { getMarkdownContent, getBibtexContent, getPageConfig } from '@/lib/content';
@@ -125,6 +126,12 @@ function loadPageDataForLocale(locale: string | undefined): HomePageLocaleData {
     pagesToShow,
   };
 }
+
+export const metadata: Metadata = {
+  title: { absolute: 'Yao Yao · Political Science, University of Georgia' },
+  description:
+    'Yao Yao is a PhD candidate in Political Science at the University of Georgia who studies executive politics, the separation of powers, and democratic accountability.',
+};
 
 export default function AboutPage() {
   const baseConfig = getConfig();
