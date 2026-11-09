@@ -2,10 +2,10 @@ title = "Photography"
 description = "Fragments of places, people, and passing moments."
 
 [[photos]]
-id = "aranya-shore"
-src = "IMG_3877.JPG"
-alt = "A calm shoreline under a pink sky at sunrise."
-title = "Shore at sunrise"
+id = "aranya-gulls"
+src = "IMG_3876.JPG"
+alt = "Seagulls in flight over the sea at dusk."
+title = "Gulls at dusk"
 location = "Aranya, Hebei, China"
 
 [[photos]]
@@ -16,10 +16,10 @@ title = "Under the moon"
 location = "Aranya, Hebei, China"
 
 [[photos]]
-id = "aranya-gulls"
-src = "IMG_3876.JPG"
-alt = "Seagulls in flight over the sea at dusk."
-title = "Gulls at dusk"
+id = "aranya-shore"
+src = "IMG_3877.JPG"
+alt = "A calm shoreline under a pink sky at sunrise."
+title = "Shore at sunrise"
 location = "Aranya, Hebei, China"
 
 [[photos]]
