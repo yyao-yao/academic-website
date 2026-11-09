@@ -38,6 +38,9 @@ export default function DigitalEntrance() {
         <p className={styles.role}>{zh ? '佐治亚大学政治学系博士候选人' : 'PhD Candidate in Political Science, University of Georgia'}</p>
         <p className={styles.description}>{zh ? '行政政治 · 三权分立 · 民主问责' : 'Executive politics · Separation of powers · Democratic accountability'}</p>
         <p id="home-help" className={styles.srOnly}>{zh ? '点击名字进入关于页面。' : 'Select the name to visit About.'}</p>
+        <p className={styles.nightLine} aria-hidden="true">{zh
+          ? <>我对我的内心一直看得不是很清楚，<br />但我总是本能地追随一颗看不见的星星。</>
+          : <>I have never seen my own heart very clearly,<br />but I always follow, by instinct, a star I cannot see.</>}</p>
         <p className={styles.hint}><span className={styles.hintMouse}>{zh ? '把鼠标移近名字' : 'Move the cursor near the name'}</span><span className={styles.hintTouch}>{zh ? '用手指划过名字' : 'Drag a finger across the name'}</span></p>
       </div>
 
