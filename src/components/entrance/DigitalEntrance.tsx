@@ -46,7 +46,7 @@ export default function DigitalEntrance() {
       <div className={styles.orbit} aria-hidden="true"><span /></div>
       <footer className={styles.footer}><a href="mailto:Yao.Yao1@uga.edu"><span className={styles.statusDot} /> Yao.Yao1@uga.edu</a><span className={styles.nightLine} aria-hidden="true">{zh
         ? <>我对我的内心一直看得不是很清楚，但我总是本能地追随一颗看不见的星星。<span className={styles.nightSource}>—— 加缪《手记》，1950.1.10</span></>
-        : <>I have never seen very clearly into myself, but I have always followed, by instinct, an invisible star.<span className={styles.nightSource}>— Albert Camus, Notebooks, 1950</span></>}</span><span>© Yao Yao</span></footer>
+        : <>In the end, I have never seen very clearly into myself. But I have always followed, by instinct, an invisible star.<span className={styles.nightSource}>— Albert Camus, Notebooks, 1950</span></>}</span><span>© Yao Yao</span></footer>
     </section>
   );
 }
