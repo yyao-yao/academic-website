@@ -442,11 +442,11 @@
 @media (max-width: 1023px) { .academic :global([data-about-email]) { margin-left: auto; margin-right: auto; } }
 .academic :global([data-about-email] + [data-about-cv]) { margin-top: 8px; }
 
-/* Job market note: last bold-only paragraph of the bio, set apart as a callout */
+/* Job market note: last bold-only paragraph of the bio, set apart quietly */
 .academic :global([data-academic='biography'] p:last-child:has(> strong:only-child)) {
-  margin-top: 40px; margin-bottom: 0; padding: 14px 20px;
-  border-left: 3px solid var(--blue);
-  background: color-mix(in srgb, var(--blue) 7%, transparent);
-  border-radius: 0 4px 4px 0;
+  margin-top: 36px; margin-bottom: 0; padding-top: 18px; position: relative;
+}
+.academic :global([data-academic='biography'] p:last-child:has(> strong:only-child))::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 40px; height: 2px; background: var(--blue);
 }
 .academic :global([data-academic='biography'] p:last-child:has(> strong:only-child) strong) { color: var(--ink); font-weight: 600; }
