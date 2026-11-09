@@ -27,6 +27,9 @@ export async function generateMetadata(): Promise<Metadata> {
     icons: {
       icon: config.site.favicon,
     },
+    verification: {
+      google: 'xr_k779OZs8n1VahXTj0fGN7e9F0evk8gkhK_kgEXLg',
+    },
     openGraph: {
       type: 'website',
       locale: openGraphLocale,
