@@ -435,3 +435,9 @@
 }
 :global(:root:not(.dark)) .academic :global([data-name-alt])::before { border-right-color: var(--ink); }
 :global(:root:not(.dark)) .academic :global([data-name-alt])::after { border-right-color: var(--ink); }
+
+/* Email link under the name on About */
+.academic :global([data-about-email]) { display: block; width: fit-content; margin-top: 12px; font-size: 15px; color: var(--link); text-decoration: none; }
+.academic :global([data-about-email]:hover) { text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 1023px) { .academic :global([data-about-email]) { margin-left: auto; margin-right: auto; } }
+.academic :global([data-about-email] + [data-about-cv]) { margin-top: 8px; }

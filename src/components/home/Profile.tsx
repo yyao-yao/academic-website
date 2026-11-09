@@ -137,6 +137,12 @@ export default function Profile({ cvAvailable, author, social, features, researc
                 <p className="text-neutral-600 mb-2">
                     {author.institution}
                 </p>
+                {social.email && (
+                    <a data-about-email href={`mailto:${social.email}`}>
+                        <EnvelopeIcon className="inline-block h-4 w-4 mr-1.5 -mt-0.5" aria-hidden="true" />
+                        {social.email}
+                    </a>
+                )}
                 <a
                     data-about-cv
                     href={cvAvailable ? '/cv.pdf' : undefined}
