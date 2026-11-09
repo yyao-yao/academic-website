@@ -428,10 +428,10 @@
 .academic :global([data-name-alt])::after { right: calc(100% - 1px); border-right-color: var(--surface); }
 .academic :global([data-name-swap]:hover [data-name-alt]) { opacity: 1; transform: translate(0, -50%); }
 
-/* Light mode: pale blue name bubble in the site's accent color. Dark mode keeps the default. */
+/* Light mode: dark name bubble in the same color as the name. Dark mode keeps the default. */
 :global(:root:not(.dark)) .academic :global([data-name-alt]) {
-  background: #eaf1fc; color: var(--link); border-color: #c9d9f2;
-  box-shadow: 0 4px 14px rgb(31 95 191 / .10);
+  background: var(--ink); color: var(--canvas); border-color: var(--ink);
+  box-shadow: 0 4px 14px rgb(0 0 0 / .12);
 }
-:global(:root:not(.dark)) .academic :global([data-name-alt])::before { border-right-color: #c9d9f2; }
-:global(:root:not(.dark)) .academic :global([data-name-alt])::after { border-right-color: #eaf1fc; }
+:global(:root:not(.dark)) .academic :global([data-name-alt])::before { border-right-color: var(--ink); }
+:global(:root:not(.dark)) .academic :global([data-name-alt])::after { border-right-color: var(--ink); }
