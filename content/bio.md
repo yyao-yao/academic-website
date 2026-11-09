@@ -1,5 +1,5 @@
-I am a PhD candidate in Political Science and a Presidential Graduate Fellow at the University of Georgia, advised by Dr. Johnson and Dr. Krause.
+I am a PhD candidate in Political Science and a Presidential Graduate Fellow at the University of Georgia. I study American political institutions, with a focus on executive politics and the separation of powers. I am particularly interested in how the branches interact, and how that interaction shapes democratic accountability.
 
-I study bureaucratic politics and the separation of powers: how Congress, the president, and the courts each shape what federal agencies do, through oversight, rulemaking, and judicial review. A second line of work studies the presidency.
+My dissertation, *The Politics of Rulemaking*, examines how Congress, the president, and the courts shape federal agencies. My work on the presidency studies the strategic considerations behind presidents' symbolic action. I also study how the relationship between Congress and federal agencies affects the electoral connection.
 
-Before UGA, I earned an M.A. in Public Management from Johns Hopkins University, and a B.A. in Public Administration and an LL.B. from China University of Political Science and Law.
+I hold a Bachelor of Laws (LL.B.) and a B.A. in Public Administration from China University of Political Science and Law, where I passed China's National Judicial Examination, and an M.A. in Public Management from Johns Hopkins University.
