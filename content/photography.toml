@@ -42,6 +42,7 @@ src = "IMG_3353.JPG"
 alt = "Snow-capped Mount Fuji under a soft pink sky."
 title = "Fuji at dusk"
 location = "Mount Fuji, Japan"
+featured = true
 
 [[photos]]
 id = "fuji-autumn-leaves"
@@ -63,6 +64,7 @@ src = "IMG_7969.JPG"
 alt = "A corner tower of the Forbidden City at sunset, seen from the moat outside the palace walls, the light reflected on the water."
 title = "Sunset over the moat"
 location = "Forbidden City, Beijing, China"
+featured = true
 
 [[photos]]
 id = "fuji-window-view"
@@ -98,3 +100,4 @@ src = "IMG_1767.JPG"
 alt = "A silhouetted figure looking out over the Bosphorus at night, ferry lights on the water."
 title = "Watching the Bosphorus"
 location = "Istanbul, Turkey"
+featured = true

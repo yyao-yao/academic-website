@@ -30,6 +30,7 @@ for (const photo of config.photos) {
   if (relative.startsWith('..') || path.isAbsolute(relative) || !/\.(jpe?g|png|webp)$/i.test(source)) throw new Error(`Invalid source path for ${photo.id}`);
   for (const field of optionalFields) if (photo[field] !== undefined) requireText(photo[field], `${photo.id} ${field}`);
   if (photo.sample !== undefined && typeof photo.sample !== 'boolean') throw new Error(`${photo.id} sample must be true or false.`);
+  if (photo.featured !== undefined && typeof photo.featured !== 'boolean') throw new Error(`${photo.id} featured must be true or false.`);
   if (photo.source_url !== undefined && !/^https:\/\//.test(requireText(photo.source_url, `${photo.id} source_url`))) throw new Error(`${photo.id} source_url must use HTTPS.`);
   if (photo.sample && (!photo.credit || !photo.source_url || !photo.license)) throw new Error(`Sample ${photo.id} needs credit, source_url and license.`);
   const metadata = await sharp(source, { failOn: 'error' }).metadata();
@@ -54,7 +55,7 @@ try {
         assets[format].push({ src: `/photography/${filename}`, width: result.width, height: result.height });
       }
     }
-    const record = { id: photo.id, src: photo.src, alt: photo.alt, sample: photo.sample === true, width, height, assets };
+    const record = { id: photo.id, src: photo.src, alt: photo.alt, sample: photo.sample === true, featured: photo.featured === true, width, height, assets };
     for (const field of optionalFields) if (photo[field] !== undefined) record[field] = photo[field];
     if (photo.source_url) record.sourceUrl = photo.source_url;
     photos.push(record);

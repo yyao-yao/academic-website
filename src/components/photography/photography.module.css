@@ -106,7 +106,16 @@
 .row[data-kind='pp'] .photograph:nth-child(1) { grid-column: 2 / span 2; }
 .row[data-kind='pp'] .photograph:nth-child(2) { margin-top: 96px; }
 .row[data-kind='p'] .photograph { grid-column: 3 / span 2; }
-.row[data-kind='l'] .photograph { grid-column: 2 / span 4; }
+/* Featured: a large photo (half the width) with one small companion set lower,
+   and an empty column between them for breathing room. */
+.row[data-kind='fl'] .photograph:nth-child(1) { grid-column: 1 / span 3; }
+.row[data-kind='fl'] .photograph:nth-child(2) { grid-column: 5 / span 2; margin-top: 160px; }
+.row[data-kind='fr'] .photograph:nth-child(1) { grid-column: 1 / span 2; margin-top: 160px; }
+.row[data-kind='fr'] .photograph:nth-child(2) { grid-column: 4 / span 3; }
+.row[data-kind='fr'] .photograph:only-child { grid-column: 3 / span 3; margin-top: 0; }
+.row[data-kind='L'] .photograph { grid-column: 2 / span 5; }
+.row[data-kind='l'] .photograph { grid-column: 1 / span 4; }
+.row[data-kind='fl'], .row[data-kind='fr'], .row[data-kind='L'] { margin-block: 32px; }
 @media (max-width: 1023px) {
   .rows { gap: 64px; }
   .row { column-gap: 28px; }
@@ -118,3 +127,4 @@
   .row { display: flex; flex-direction: column; gap: 48px; }
   .row .photograph { margin-top: 0 !important; }
 }
+.row[data-kind='fl'] .photograph:only-child { grid-column: 2 / span 3; }

@@ -18,6 +18,7 @@ export interface Photograph {
   sourceUrl?: string;
   license?: string;
   sample: boolean;
+  featured?: boolean;
   width: number;
   height: number;
   assets: { jpeg: PhotoAsset[]; webp: PhotoAsset[] };

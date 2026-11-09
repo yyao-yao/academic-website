@@ -54,35 +54,51 @@ export default function PhotoGallery({ photos }: { photos: Photograph[] }) {
     setActiveIndex(index);
   };
   if (photos.length === 0) return null;
-  // Editorial rows that mix portrait and landscape photos, keeping the given order:
-  // three portraits per row, or a landscape paired with one portrait (sides alternate).
-  type Row = { kind: 'ppp' | 'lp' | 'pl' | 'l' | 'pp' | 'p'; photos: Photograph[] };
+  // Editorial rows, keeping the given order. Featured photos are shown larger
+  // with one small companion; landscapes pair with a portrait; the rest run three to a row.
+  type Kind = 'ppp' | 'pp' | 'p' | 'lp' | 'pl' | 'l' | 'fl' | 'fr' | 'L';
+  type Row = { kind: Kind; photos: Photograph[] };
   const isLandscape = (photo: Photograph) => photo.width > photo.height;
+  const isPlain = (photo?: Photograph) => !!photo && !photo.featured && !isLandscape(photo);
+  const runKind = (count: number): Kind => (count === 3 ? 'ppp' : count === 2 ? 'pp' : 'p');
   const rows: Row[] = [];
   let landscapeLeft = true;
+  let featureLeft = true;
   for (let i = 0; i < photos.length;) {
     const current = photos[i];
     const next = photos[i + 1];
+    if (current.featured && isLandscape(current)) { rows.push({ kind: 'L', photos: [current] }); i += 1; continue; }
+    if (current.featured) {
+      if (isPlain(next)) {
+        rows.push({ kind: featureLeft ? 'fl' : 'fr', photos: featureLeft ? [current, next!] : [next!, current] });
+        featureLeft = !featureLeft; i += 2;
+      } else { rows.push({ kind: featureLeft ? 'fl' : 'fr', photos: [current] }); featureLeft = !featureLeft; i += 1; }
+      continue;
+    }
     if (isLandscape(current)) {
-      if (next && !isLandscape(next)) {
-        rows.push({ kind: landscapeLeft ? 'lp' : 'pl', photos: landscapeLeft ? [current, next] : [next, current] });
+      if (isPlain(next)) {
+        rows.push({ kind: landscapeLeft ? 'lp' : 'pl', photos: landscapeLeft ? [current, next!] : [next!, current] });
         landscapeLeft = !landscapeLeft; i += 2;
       } else { rows.push({ kind: 'l', photos: [current] }); i += 1; }
       continue;
     }
-    const portraits: Photograph[] = [];
-    while (portraits.length < 3 && photos[i + portraits.length] && !isLandscape(photos[i + portraits.length])) portraits.push(photos[i + portraits.length]);
-    const following = photos[i + portraits.length];
-    if (portraits.length < 3 && following && isLandscape(following)) {
-      // Leftover portraits before a landscape: the last one pairs with the landscape.
-      if (portraits.length === 2) { rows.push({ kind: 'p', photos: [portraits[0]] }); }
-      const partner = portraits[portraits.length - 1];
-      rows.push({ kind: landscapeLeft ? 'lp' : 'pl', photos: landscapeLeft ? [following, partner] : [partner, following] });
-      landscapeLeft = !landscapeLeft; i += portraits.length + 1;
-      continue;
+    const run: Photograph[] = [];
+    while (run.length < 3 && isPlain(photos[i + run.length])) run.push(photos[i + run.length]);
+    const after = photos[i + run.length];
+    if (run.length < 3 && after && after.featured && !isLandscape(after)) {
+      // A short run before a featured photo: its last photo becomes the companion.
+      if (run.length > 1) rows.push({ kind: runKind(run.length - 1), photos: run.slice(0, -1) });
+      rows.push({ kind: 'fr', photos: [run[run.length - 1], after] });
+      featureLeft = true; i += run.length + 1; continue;
     }
-    rows.push({ kind: portraits.length === 3 ? 'ppp' : portraits.length === 2 ? 'pp' : 'p', photos: portraits });
-    i += portraits.length;
+    if (run.length < 3 && after && isLandscape(after) && !after.featured) {
+      if (run.length > 1) rows.push({ kind: runKind(run.length - 1), photos: run.slice(0, -1) });
+      const partner = run[run.length - 1];
+      rows.push({ kind: landscapeLeft ? 'lp' : 'pl', photos: landscapeLeft ? [after, partner] : [partner, after] });
+      landscapeLeft = !landscapeLeft; i += run.length + 1; continue;
+    }
+    rows.push({ kind: runKind(run.length), photos: run });
+    i += run.length;
   }
   return (
     <>
