@@ -58,22 +58,23 @@ export default function PhotoGallery({ photos }: { photos: Photograph[] }) {
   // columns end at about the same height. Column count follows the screen width.
   const columnsFor = (count: number) => {
     const columns: Photograph[][] = Array.from({ length: count }, () => []);
-    const heights = new Array(count).fill(0);
+    const heights: number[] = count === 2 ? [0, 2] : new Array(count).fill(0);
     photos.forEach(photo => {
       const target = heights.indexOf(Math.min(...heights));
       columns[target].push(photo);
-      heights[target] += photo.height / photo.width + 0.12;
+      const columnWidth = count === 2 ? (target === 0 ? 7 : 5) : 1;
+      heights[target] += columnWidth * photo.height / photo.width + 1.2;
     });
     return columns;
   };
-  const layouts = [3, 2, 1].map(count => ({ count, columns: columnsFor(count) }));
+  const layouts = [2, 1].map(count => ({ count, columns: columnsFor(count) }));
   return (
     <>
       {layouts.map(({ count, columns }) => (
         <div key={count} className={styles.masonry} data-columns={count}>
           {columns.map((column, index) => (
             <div key={index} className={styles.column} data-column={index}>
-              {column.map(photo => <Photo key={photo.id} photo={photo} opening={photo.id === photos[0].id && count === 3} onOpen={open} />)}
+              {column.map(photo => <Photo key={photo.id} photo={photo} opening={photo.id === photos[0].id && count === 2} onOpen={open} />)}
             </div>
           ))}
         </div>
