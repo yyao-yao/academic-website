@@ -365,8 +365,8 @@
 .academic :global([data-academic='theme-control']:hover),
 .academic :global([data-academic='language-control']:hover) { border-color: var(--rule); }
 /* About: 240px profile column, 88px gap, 1100px container */
-.academic :global([data-academic='page']) { max-width: 1100px; padding: 72px 32px 112px; }
-.academic :global([data-academic='columns']) { grid-template-columns: 240px minmax(0, 1fr); gap: 88px; }
+.academic :global([data-academic='page']) { max-width: 1020px; padding: 72px 32px 112px; }
+.academic :global([data-academic='columns']) { grid-template-columns: 240px minmax(0, 1fr); gap: 72px; }
 .academic :global([data-academic='portrait']) { width: 200px; height: 200px; margin: 0 0 24px; border: 0; border-radius: 4px; }
 .academic :global([data-academic='identity']) { margin-bottom: 24px; }
 .academic :global([data-academic='identity'] h1) { font-family: var(--font-editorial); font-size: 30px; font-weight: 700; letter-spacing: -.02em; line-height: 1.15; margin-bottom: 6px; color: var(--ink); }
@@ -383,7 +383,7 @@
 .academic :global([data-academic='biography']) { font-size: 17px; line-height: 1.75; color: var(--body); max-width: 680px; }
 .academic :global([data-academic='biography'] p) { margin-bottom: 18px; }
 /* Research and Teaching pages: centered 760px column */
-.academic :global([data-academic='document-page']) { max-width: 1100px; padding: 72px 32px 112px; }
+.academic :global([data-academic='document-page']) { max-width: 920px; padding: 72px 32px 112px; }
 .academic :global([data-research-page] h1),
 .academic :global([data-teaching-page] h1) { font-family: var(--font-editorial); font-size: 36px; font-weight: 700; letter-spacing: -.02em; }
 /* Footer */
