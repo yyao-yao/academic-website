@@ -1,4 +1,4 @@
-.page { max-width: 760px; margin-inline: auto; font-family: var(--font-editorial); color: var(--ink); }
+.page { max-width: 960px; margin-inline: auto; font-family: var(--font-editorial); color: var(--ink); }
 .title { font-size: 36px; line-height: 1.2; margin: 0 0 56px; }
 .section + .section { margin-top: 56px; }
 .page .section h2 { font-family: var(--font-metadata); font-size: 13px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; line-height: 1.4; color: var(--link); margin: 0 0 22px; padding-bottom: 10px; border-bottom: 1px solid var(--rule); }
