@@ -9,7 +9,7 @@ const sourceRoot = path.join(root, 'photography/sources');
 const outputRoot = path.join(root, 'public/photography');
 const temporaryRoot = path.join(root, 'public/.photography-preparing');
 const config = parse(await fs.readFile(path.join(root, 'content/photography.toml'), 'utf8'));
-const optionalFields = ['title', 'description', 'location', 'date', 'camera', 'collection', 'credit', 'license'];
+const optionalFields = ['title', 'description', 'location', 'date', 'camera', 'collection', 'credit', 'license', 'title_zh', 'location_zh', 'alt_zh', 'description_zh'];
 const requireText = (value, label) => {
   if (typeof value !== 'string' || !value.trim()) throw new Error(`${label} must be a nonempty string.`);
   return value;
@@ -60,7 +60,7 @@ try {
     if (photo.source_url) record.sourceUrl = photo.source_url;
     photos.push(record);
   }
-  await fs.writeFile(path.join(temporaryRoot, 'manifest.json'), JSON.stringify({ title: config.title, description: config.description, photos }, null, 2) + '\n');
+  await fs.writeFile(path.join(temporaryRoot, 'manifest.json'), JSON.stringify({ title: config.title, description: config.description, title_zh: config.title_zh, description_zh: config.description_zh, photos }, null, 2) + '\n');
   // Publish only a complete, validated set; stale assets disappear on removal/reorder.
   await fs.rm(outputRoot, { recursive: true, force: true });
   await fs.rename(temporaryRoot, outputRoot);

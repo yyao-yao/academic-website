@@ -1,5 +1,7 @@
 title = "Photography"
 description = "Fragments of places, people, and passing moments."
+title_zh = "摄影"
+description_zh = "关于地方、人和转瞬即逝的片段。"
 
 [[photos]]
 id = "aranya-gulls"
@@ -7,6 +9,9 @@ src = "IMG_3876.JPG"
 alt = "Seagulls in flight over the sea at sunrise."
 title = "Gulls at sunrise"
 location = "Aranya, Hebei, China"
+title_zh = "日出时的海鸥"
+location_zh = "中国河北 · 阿那亚"
+alt_zh = "日出时，海鸥在海面上飞翔。"
 
 [[photos]]
 id = "aranya-moon"
@@ -14,6 +19,9 @@ src = "IMG_3878.JPG"
 alt = "A girl in white faces the evening sea, a faint moon rising in a lavender sky."
 title = "Under the moon"
 location = "Aranya, Hebei, China"
+title_zh = "月亮下的人"
+location_zh = "中国河北 · 阿那亚"
+alt_zh = "傍晚的海边，一个穿白衣的女孩面朝大海，淡紫色的天空升起一弯淡淡的月亮。"
 
 [[photos]]
 id = "aranya-shore"
@@ -21,6 +29,9 @@ src = "IMG_3877.JPG"
 alt = "A calm shoreline under a pink sky at sunrise."
 title = "Shore at sunrise"
 location = "Aranya, Hebei, China"
+title_zh = "日出时的海岸"
+location_zh = "中国河北 · 阿那亚"
+alt_zh = "日出时粉色天空下平静的海岸。"
 
 [[photos]]
 id = "kyoto-kiyomizu-pagoda"
@@ -28,6 +39,9 @@ src = "IMG_3553.JPG"
 alt = "The red pagoda of Kiyomizu-dera above the city on a hazy day."
 title = "Kiyomizu-dera"
 location = "Kyoto, Japan"
+title_zh = "清水寺"
+location_zh = "日本 · 京都"
+alt_zh = "雾气中，清水寺的红色宝塔立在城市之上。"
 
 [[photos]]
 id = "fuji-town-street"
@@ -35,6 +49,9 @@ src = "IMG_3551.JPG"
 alt = "The street by the Hikawa Clock Shop in Fujiyoshida at sunrise, the sun rising behind the utility wires."
 title = "Sunrise street"
 location = "Hikawa Clock Shop, Fujiyoshida, Japan"
+title_zh = "日出时的街道"
+location_zh = "日本 · 富士吉田 · 日川时计店"
+alt_zh = "日出时富士吉田日川时计店旁的街道，太阳从电线后升起。"
 
 [[photos]]
 id = "fuji-pink-sky"
@@ -42,6 +59,9 @@ src = "IMG_3353.JPG"
 alt = "Snow-capped Mount Fuji under a soft pink sky."
 title = "Fuji at dusk"
 location = "Mount Fuji, Japan"
+title_zh = "傍晚的富士山"
+location_zh = "日本 · 富士山"
+alt_zh = "柔和粉色天空下的雪顶富士山。"
 featured = true
 
 [[photos]]
@@ -50,6 +70,9 @@ src = "2F8A0898.JPG"
 alt = "Mount Fuji framed by golden autumn leaves."
 title = "Autumn leaves and Fuji"
 location = "Mount Fuji, Japan"
+title_zh = "红叶与富士山"
+location_zh = "日本 · 富士山"
+alt_zh = "金色秋叶环绕着的富士山。"
 
 [[photos]]
 id = "forbidden-city-winter"
@@ -57,6 +80,9 @@ src = "IMG_7936.jpg"
 alt = "The Forbidden City after a snowfall, its roofs dusted white beyond golden winter grasses on a clear day."
 title = "The Forbidden City after snow"
 location = "Forbidden City, Beijing, China"
+title_zh = "雪后故宫"
+location_zh = "中国北京 · 故宫"
+alt_zh = "雪后的故宫，屋顶覆着薄雪，前面是金色的冬草，天空晴朗。"
 
 [[photos]]
 id = "forbidden-city-sunset"
@@ -64,6 +90,9 @@ src = "IMG_7969.jpg"
 alt = "A corner tower of the Forbidden City at sunset, seen from the moat outside the palace walls, the light reflected on the water."
 title = "Sunset over the moat"
 location = "Forbidden City, Beijing, China"
+title_zh = "护城河上的日落"
+location_zh = "中国北京 · 故宫"
+alt_zh = "日落时从宫墙外护城河望见的故宫角楼，光影倒映在水面上。"
 featured = true
 
 [[photos]]
@@ -72,6 +101,9 @@ src = "2F8A0870.JPG"
 alt = "Mount Fuji seen through a window frame above rooftops."
 title = "Fuji through the window"
 location = "Mount Fuji, Japan"
+title_zh = "窗外的富士山"
+location_zh = "日本 · 富士山"
+alt_zh = "透过窗框望见屋顶之上的富士山。"
 
 [[photos]]
 id = "istanbul-street-to-water"
@@ -79,6 +111,9 @@ src = "IMG_1763.JPG"
 alt = "A narrow street in Istanbul at dusk, opening onto the water and distant hills."
 title = "A street toward the water"
 location = "Istanbul, Turkey"
+title_zh = "通往水边的街道"
+location_zh = "土耳其 · 伊斯坦布尔"
+alt_zh = "黄昏时伊斯坦布尔的一条窄街，尽头是海水和远山。"
 
 [[photos]]
 id = "istanbul-eminonu-evening"
@@ -86,6 +121,9 @@ src = "IMG_1776.JPG"
 alt = "A yellow taxi on a road at dusk, with the domes and minarets of the New Mosque behind."
 title = "Evening traffic, Eminönü"
 location = "Istanbul, Turkey"
+title_zh = "埃米诺努的傍晚车流"
+location_zh = "土耳其 · 伊斯坦布尔"
+alt_zh = "黄昏时路上的一辆黄色出租车，身后是新清真寺的穹顶和宣礼塔。"
 
 [[photos]]
 id = "istanbul-new-mosque"
@@ -93,6 +131,9 @@ src = "IMG_1764.JPG"
 alt = "The New Mosque lit up across the Golden Horn at dusk, Istanbul."
 title = "New Mosque at blue hour"
 location = "Istanbul, Turkey"
+title_zh = "蓝调时刻的新清真寺"
+location_zh = "土耳其 · 伊斯坦布尔"
+alt_zh = "黄昏时隔着金角湾望见灯火亮起的新清真寺。"
 
 [[photos]]
 id = "istanbul-bosphorus-night"
@@ -100,4 +141,7 @@ src = "IMG_1767.JPG"
 alt = "A silhouetted figure looking out over the Bosphorus at night, ferry lights on the water."
 title = "Watching the Bosphorus"
 location = "Istanbul, Turkey"
+title_zh = "眺望博斯普鲁斯海峡"
+location_zh = "土耳其 · 伊斯坦布尔"
+alt_zh = "夜里一个人的剪影望向博斯普鲁斯海峡，水面上是渡轮的灯光。"
 featured = true

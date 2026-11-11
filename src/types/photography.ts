@@ -19,6 +19,10 @@ export interface Photograph {
   license?: string;
   sample: boolean;
   featured?: boolean;
+  title_zh?: string;
+  location_zh?: string;
+  alt_zh?: string;
+  description_zh?: string;
   width: number;
   height: number;
   assets: { jpeg: PhotoAsset[]; webp: PhotoAsset[] };
@@ -27,5 +31,7 @@ export interface Photograph {
 export interface PhotographyData {
   title: string;
   description?: string;
+  title_zh?: string;
+  description_zh?: string;
   photos: Photograph[];
 }

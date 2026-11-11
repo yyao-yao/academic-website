@@ -445,3 +445,9 @@
 /* Job market note: last bold-only paragraph of the bio, set apart by space */
 .academic :global([data-academic='biography'] p:last-child:has(> strong:only-child)) { margin-top: 36px; margin-bottom: 0; }
 .academic :global([data-academic='biography'] p:last-child:has(> strong:only-child) strong) { color: var(--ink); font-weight: 600; }
+
+/* Top bar name sits near the window's left edge, mirroring the controls on the right.
+   It stays in the layout flow (relative), so the menu does not move. */
+@media (min-width: 1024px) {
+  .academic :global([data-academic='brand']) { position: relative; left: calc(-1 * max(0px, (100vw - 1100px) / 2 - 8px)); }
+}

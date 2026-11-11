@@ -1,6 +1,7 @@
 'use client';
 
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
+import { useLocaleStore } from '@/lib/stores/localeStore';
 import PhotoLightbox from './PhotoLightbox';
 import type { Photograph } from '@/types/photography';
 import styles from './photography.module.css';
@@ -43,7 +44,15 @@ function Photo({ photo, opening = false, onOpen }: { photo: Photograph; opening?
   );
 }
 
-export default function PhotoGallery({ photos }: { photos: Photograph[] }) {
+export default function PhotoGallery({ photos: source }: { photos: Photograph[] }) {
+  const zh = useLocaleStore(state => state.locale).startsWith('zh');
+  const photos = useMemo(() => zh ? source.map(photo => ({
+    ...photo,
+    title: photo.title_zh || photo.title,
+    location: photo.location_zh || photo.location,
+    alt: photo.alt_zh || photo.alt,
+    description: photo.description_zh || photo.description,
+  })) : source, [zh, source]);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const opener = useRef<HTMLButtonElement | null>(null);
   const close = useCallback(() => setActiveIndex(null), []);
