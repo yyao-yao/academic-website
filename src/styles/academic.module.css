@@ -449,5 +449,5 @@
 /* Top bar name sits near the window's left edge, mirroring the controls on the right.
    It stays in the layout flow (relative), so the menu does not move. */
 @media (min-width: 1024px) {
-  .academic :global([data-academic='brand']) { position: relative; left: calc(-0.55 * max(0px, (100vw - 1100px) / 2 - 8px)); }
+  .academic :global([data-academic='brand']) { position: relative; left: calc(-0.3 * max(0px, (100vw - 1100px) / 2 - 8px)); }
 }
