@@ -1,6 +1,6 @@
 'use client';
 
-import Profile from '@/components/home/Profile';
+import Profile, { ResearchInterests } from '@/components/home/Profile';
 import About from '@/components/home/About';
 import SelectedPublications from '@/components/home/SelectedPublications';
 import PublicationsList from '@/components/publications/PublicationsList';
@@ -113,6 +113,7 @@ export default function HomePageClient({ dataByLocale, defaultLocale }: HomePage
               )}
             </section>
           ))}
+          <ResearchInterests interests={data.researchInterests} placement="below-about" />
         </div>
       </div>
     </div>

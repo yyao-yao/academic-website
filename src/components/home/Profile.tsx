@@ -328,17 +328,8 @@ export default function Profile({ cvAvailable, author, social, features, researc
                 })}
             </div>
 
-            {/* Research Interests */}
-            {researchInterests && researchInterests.length > 0 && (
-                <div data-academic="interests" className="bg-neutral-100 dark:bg-neutral-800 rounded-lg p-4 mb-6 hover:shadow-lg transition-all duration-200 hover:scale-[1.02]">
-                    <h3 className="font-semibold text-primary mb-3">{messages.profile.researchInterests}</h3>
-                    <div className="space-y-2 text-sm text-neutral-700 dark:text-neutral-500">
-                        {researchInterests.map((interest, index) => (
-                            <div key={index}>{interest}</div>
-                        ))}
-                    </div>
-                </div>
-            )}
+            {/* Research Interests (sidebar copy; hidden on phones and tablets, where it moves below About) */}
+            <ResearchInterests interests={researchInterests} placement="sidebar" />
 
             {/* Like Button */}
             {features.enable_likes && (
@@ -381,6 +372,23 @@ export default function Profile({ cvAvailable, author, social, features, researc
                     </div>
                 </div>
             )}
+        </div>
+    );
+}
+
+// Research interests block. Rendered twice: once in the sidebar (wide screens)
+// and once below the About text (narrow screens). CSS shows only one at a time.
+export function ResearchInterests({ interests, placement }: { interests?: string[]; placement: 'sidebar' | 'below-about' }) {
+    const messages = useMessages();
+    if (!interests || interests.length === 0) return null;
+    return (
+        <div data-academic="interests" data-interests-placement={placement} className="bg-neutral-100 dark:bg-neutral-800 rounded-lg p-4 mb-6 hover:shadow-lg transition-all duration-200 hover:scale-[1.02]">
+            <h3 className="font-semibold text-primary mb-3">{messages.profile.researchInterests}</h3>
+            <div className="space-y-2 text-sm text-neutral-700 dark:text-neutral-500">
+                {interests.map((interest, index) => (
+                    <div key={index}>{interest}</div>
+                ))}
+            </div>
         </div>
     );
 }

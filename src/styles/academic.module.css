@@ -451,3 +451,12 @@
 @media (min-width: 1024px) {
   .academic :global([data-academic='brand']) { position: relative; left: calc(-0.3 * max(0px, (100vw - 1100px) / 2 - 8px)); }
 }
+
+/* Phones and tablets: center the photo, and move Research Interests below the About text.
+   Wide screens keep Research Interests in the left sidebar. */
+.academic :global([data-interests-placement='below-about']) { display: none; }
+@media (max-width: 1023px) {
+  .academic :global([data-academic='portrait']) { margin-left: auto; margin-right: auto; }
+  .academic :global([data-interests-placement='sidebar']) { display: none; }
+  .academic :global([data-interests-placement='below-about']) { display: block; margin-top: 48px; margin-bottom: 0; }
+}
